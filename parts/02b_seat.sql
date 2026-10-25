@@ -1,6 +1,9 @@
-
--- 2.6 SEAT : generated from COACH x COACH_CLASS (seat_id = coach_id*100 + seat_no)
---     berth pattern: SL/3A bay of 8, 2A bay of 6, 1A lower/upper, chair cars window/middle/aisle
+-- =====================================================================================
+--  PART 2b : STANDALONE SEAT POPULATION (OPTIONAL / IDEMPOTENT)
+--  Populates SEAT table from COACH x COACH_CLASS (seat_id = coach_id*100 + seat_no)
+--  Berth pattern: SL/3A bay of 8, 2A bay of 6, 1A lower/upper, chair cars window/middle/aisle
+--  Safe to execute standalone or as part of full setup (idempotent WHERE NOT EXISTS)
+-- =====================================================================================
 INSERT INTO seat (seat_id, coach_id, seat_no, berth_type)
 SELECT c.coach_id * 100 + n.lvl, c.coach_id, n.lvl,
        CASE
@@ -14,5 +17,9 @@ SELECT c.coach_id * 100 + n.lvl, c.coach_id, n.lvl,
        END
 FROM   coach c
        JOIN coach_class cc ON cc.class_code = c.class_code
-       JOIN (SELECT LEVEL AS lvl FROM dual CONNECT BY LEVEL <= 100) n ON n.lvl <= cc.seats_per_coach;
+       JOIN (SELECT LEVEL AS lvl FROM dual CONNECT BY LEVEL <= 100) n ON n.lvl <= cc.seats_per_coach
+WHERE  NOT EXISTS (
+       SELECT 1 FROM seat s WHERE s.seat_id = c.coach_id * 100 + n.lvl
+);
 
+COMMIT;

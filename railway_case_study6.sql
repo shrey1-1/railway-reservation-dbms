@@ -41,6 +41,11 @@ BEGIN
             WHERE sequence_name IN ('SEQ_PNR','SEQ_PAYMENT','SEQ_CANCEL')) LOOP
     EXECUTE IMMEDIATE 'DROP SEQUENCE ' || s.sequence_name;
   END LOOP;
+  FOR p IN (SELECT object_name, object_type FROM user_objects
+            WHERE object_type IN ('PROCEDURE','FUNCTION')
+            AND object_name IN ('BOOK_TICKET','CANCEL_TICKET','PRC_CAPACITY_RISK_REPORT','FN_CAPACITY_RISK')) LOOP
+    EXECUTE IMMEDIATE 'DROP ' || p.object_type || ' ' || p.object_name;
+  END LOOP;
 END;
 /
 
@@ -177,6 +182,15 @@ CREATE UNIQUE INDEX ux_res_pass_journey
   ON reservation (CASE WHEN status <> 'CANCELLED' THEN passenger_id END,
                   CASE WHEN status <> 'CANCELLED' THEN schedule_id  END);
 CREATE INDEX ix_res_schedule_status ON reservation (schedule_id, status);
+
+-- Supporting indexes on foreign keys to eliminate unindexed FK locking and speed up joins
+CREATE INDEX ix_res_passenger   ON reservation (passenger_id);
+CREATE INDEX ix_res_from_stn    ON reservation (from_station);
+CREATE INDEX ix_res_to_stn      ON reservation (to_station);
+CREATE INDEX ix_res_seat        ON reservation (seat_id);
+CREATE INDEX ix_rs_station      ON route_stop (station_code);
+CREATE INDEX ix_train_route     ON train (route_id);
+CREATE INDEX ix_coach_class     ON coach (class_code);
 
 -- 1.11 PAYMENT : exactly one payment per reservation (1:1)
 CREATE TABLE payment (
@@ -1338,6 +1352,9 @@ INSERT INTO reservation (pnr, passenger_id, schedule_id, class_code, seat_id, fr
 INSERT INTO reservation (pnr, passenger_id, schedule_id, class_code, seat_id, from_station, to_station, booking_date, status) VALUES (4200000767, 17, 127, 'EC', 3006, 'ED', 'CBE', DATE '2026-10-18', 'CONFIRMED');
 INSERT INTO reservation (pnr, passenger_id, schedule_id, class_code, seat_id, from_station, to_station, booking_date, status) VALUES (4200000768, 15, 127, 'CC', 2805, 'SBC', 'PGT', DATE '2026-10-18', 'CONFIRMED');
 
+COMMIT;
+
+
 -- 2.10 PAYMENT : one payment per reservation (INSERT ... SELECT)
 INSERT INTO payment (payment_id, pnr, amount, pay_mode, paid_on, pay_status)
 SELECT 900000 + ROW_NUMBER() OVER (ORDER BY r.pnr),
@@ -1459,9 +1476,9 @@ BEGIN   -- destination before boarding point
 EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('5.4 wrong direction     -> ' || SQLERRM);
 END;
 /
-BEGIN   -- confirmed ticket without a seat
-  INSERT INTO reservation (pnr, passenger_id, schedule_id, class_code, from_station, to_station, status)
-  VALUES (4299999994, 60, 103, 'CC', 'MAS', 'SBC', 'CONFIRMED');
+BEGIN   -- confirmed ticket without a seat (booking_date <= journey_date ensures CK_RES_SEAT_STATUS is tested directly)
+  INSERT INTO reservation (pnr, passenger_id, schedule_id, class_code, from_station, to_station, booking_date, status)
+  VALUES (4299999994, 60, 103, 'CC', 'MAS', 'SBC', DATE '2026-10-20', 'CONFIRMED');
 EXCEPTION WHEN OTHERS THEN DBMS_OUTPUT.PUT_LINE('5.5 confirmed, no seat  -> ' || SQLERRM);
 END;
 /
@@ -1480,6 +1497,7 @@ END;
 --  PART 6 : SEAT ALLOCATION AND CANCELLATION PROCESSING (stored procedures)
 -- =====================================================================================
 -- 6.1 BOOK_TICKET : allocates the first free seat of the requested class, else WAITLIST
+--     Hardened with: row locking (FOR UPDATE) & DUP_VAL_ON_INDEX bounded retry loop for concurrent safety
 CREATE OR REPLACE PROCEDURE book_ticket (
   p_passenger IN  NUMBER,
   p_schedule  IN  NUMBER,
@@ -1494,10 +1512,40 @@ CREATE OR REPLACE PROCEDURE book_ticket (
   v_coaches      NUMBER;
   v_seat         seat.seat_id%TYPE;
   v_fare         reservation.fare%TYPE;
+  v_pax_count    NUMBER;
+  v_pax_active   NUMBER;
+  v_retries      NUMBER := 0;
 BEGIN
-  SELECT sched_status INTO v_sched_status FROM train_schedule WHERE schedule_id = p_schedule;
+  -- Validate passenger existence
+  SELECT COUNT(*) INTO v_pax_count FROM passenger WHERE passenger_id = p_passenger;
+  IF v_pax_count = 0 THEN
+    RAISE_APPLICATION_ERROR(-20015, 'Passenger ' || p_passenger || ' does not exist');
+  END IF;
+
+  -- Validate and lock schedule to serialize concurrent allocation per journey
+  BEGIN
+    SELECT sched_status INTO v_sched_status
+    FROM   train_schedule
+    WHERE  schedule_id = p_schedule
+    FOR UPDATE;
+  EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+      RAISE_APPLICATION_ERROR(-20014, 'Journey schedule ' || p_schedule || ' not found');
+  END;
+
   IF v_sched_status <> 'SCHEDULED' THEN
     RAISE_APPLICATION_ERROR(-20010, 'Booking closed for journey ' || p_schedule);
+  END IF;
+
+  -- Validate passenger does not already hold an active ticket on this journey (BR8)
+  SELECT COUNT(*) INTO v_pax_active
+  FROM   reservation
+  WHERE  schedule_id = p_schedule
+  AND    passenger_id = p_passenger
+  AND    status <> 'CANCELLED';
+
+  IF v_pax_active > 0 THEN
+    RAISE_APPLICATION_ERROR(-20017, 'Passenger ' || p_passenger || ' already holds an active ticket for journey ' || p_schedule);
   END IF;
 
   SELECT COUNT(*) INTO v_coaches
@@ -1507,22 +1555,53 @@ BEGIN
     RAISE_APPLICATION_ERROR(-20011, 'Class ' || p_class || ' is not available on this train');
   END IF;
 
-  SELECT MIN(st.seat_id) INTO v_seat
-  FROM   seat st
-         JOIN coach c          ON c.coach_id = st.coach_id
-         JOIN train_schedule s ON s.train_no = c.train_no
-  WHERE  s.schedule_id = p_schedule
-  AND    c.class_code  = p_class
-  AND    NOT EXISTS (SELECT 1 FROM reservation r
-                     WHERE r.schedule_id = p_schedule AND r.seat_id = st.seat_id);
+  -- Concurrency-safe seat allocation loop: bounded retry if seat race condition is encountered
+  LOOP
+    v_retries := v_retries + 1;
+    IF v_retries > 50 THEN
+      RAISE_APPLICATION_ERROR(-20018, 'Seat allocation exceeded max retries due to concurrent demand');
+    END IF;
 
-  p_status := CASE WHEN v_seat IS NULL THEN 'WAITLIST' ELSE 'CONFIRMED' END;
-  p_pnr    := seq_pnr.NEXTVAL;
+    v_seat := NULL;
+    BEGIN
+      SELECT seat_id INTO v_seat
+      FROM (
+        SELECT st.seat_id
+        FROM   seat st
+               JOIN coach c          ON c.coach_id = st.coach_id
+               JOIN train_schedule s ON s.train_no = c.train_no
+        WHERE  s.schedule_id = p_schedule
+        AND    c.class_code  = p_class
+        AND    NOT EXISTS (SELECT 1 FROM reservation r
+                           WHERE r.schedule_id = p_schedule AND r.seat_id = st.seat_id)
+        ORDER BY st.seat_id
+      )
+      WHERE ROWNUM = 1;
+    EXCEPTION
+      WHEN NO_DATA_FOUND THEN
+        v_seat := NULL;
+    END;
 
-  INSERT INTO reservation (pnr, passenger_id, schedule_id, class_code, seat_id,
-                           from_station, to_station, booking_date, status)
-  VALUES (p_pnr, p_passenger, p_schedule, p_class, v_seat, p_from, p_to, TRUNC(SYSDATE), p_status)
-  RETURNING fare INTO v_fare;
+    p_status := CASE WHEN v_seat IS NULL THEN 'WAITLIST' ELSE 'CONFIRMED' END;
+    p_pnr    := seq_pnr.NEXTVAL;
+
+    BEGIN
+      INSERT INTO reservation (pnr, passenger_id, schedule_id, class_code, seat_id,
+                               from_station, to_station, booking_date, status)
+      VALUES (p_pnr, p_passenger, p_schedule, p_class, v_seat, p_from, p_to, TRUNC(SYSDATE), p_status)
+      RETURNING fare INTO v_fare;
+
+      EXIT; -- Insert succeeded
+    EXCEPTION
+      WHEN DUP_VAL_ON_INDEX THEN
+        IF v_seat IS NOT NULL THEN
+          -- Candidate seat was taken concurrently: retry for next seat
+          NULL;
+        ELSE
+          RAISE;
+        END IF;
+    END;
+  END LOOP;
 
   INSERT INTO payment VALUES (seq_payment.NEXTVAL, p_pnr, v_fare, p_mode, TRUNC(SYSDATE), 'SUCCESS');
 END;
@@ -1530,6 +1609,7 @@ END;
 
 -- 6.2 CANCEL_TICKET : refund by time-to-departure, release seat, promote first waitlisted ticket
 --     Refund : waitlist 100% | >=48 h 90% | >=24 h 75% | >=4 h 50% | <4 h nil
+--     Hardened with: PNR existence check, serialized waitlist row-level lock (FOR UPDATE)
 CREATE OR REPLACE PROCEDURE cancel_ticket (p_pnr IN NUMBER, p_reason IN VARCHAR2) AS
   v_status   reservation.status%TYPE;
   v_fare     reservation.fare%TYPE;
@@ -1541,14 +1621,19 @@ CREATE OR REPLACE PROCEDURE cancel_ticket (p_pnr IN NUMBER, p_reason IN VARCHAR2
   v_refund   NUMBER(8,2);
   v_promoted reservation.pnr%TYPE;
 BEGIN
-  SELECT r.status, r.fare, r.seat_id, r.schedule_id, r.class_code,
-         s.journey_date + TO_NUMBER(SUBSTR(t.dep_time, 1, 2)) / 24 + TO_NUMBER(SUBSTR(t.dep_time, 4, 2)) / 1440
-  INTO   v_status, v_fare, v_seat, v_sched, v_class, v_depart
-  FROM   reservation r
-         JOIN train_schedule s ON s.schedule_id = r.schedule_id
-         JOIN train t          ON t.train_no    = s.train_no
-  WHERE  r.pnr = p_pnr
-  FOR UPDATE OF r.status;
+  BEGIN
+    SELECT r.status, r.fare, r.seat_id, r.schedule_id, r.class_code,
+           s.journey_date + TO_NUMBER(SUBSTR(t.dep_time, 1, 2)) / 24 + TO_NUMBER(SUBSTR(t.dep_time, 4, 2)) / 1440
+    INTO   v_status, v_fare, v_seat, v_sched, v_class, v_depart
+    FROM   reservation r
+           JOIN train_schedule s ON s.schedule_id = r.schedule_id
+           JOIN train t          ON t.train_no    = s.train_no
+    WHERE  r.pnr = p_pnr
+    FOR UPDATE OF r.status;
+  EXCEPTION
+    WHEN NO_DATA_FOUND THEN
+      RAISE_APPLICATION_ERROR(-20016, 'PNR ' || p_pnr || ' does not exist');
+  END;
 
   IF v_status NOT IN ('CONFIRMED','WAITLIST') THEN
     RAISE_APPLICATION_ERROR(-20012, 'PNR ' || p_pnr || ' is ' || v_status || ' and cannot be cancelled');
@@ -1566,25 +1651,53 @@ BEGIN
 
   UPDATE reservation SET status = 'CANCELLED', seat_id = NULL WHERE pnr = p_pnr;
   INSERT INTO cancellation VALUES (seq_cancel.NEXTVAL, p_pnr, TRUNC(SYSDATE), v_refund, p_reason);
-  UPDATE payment SET pay_status = CASE WHEN v_refund >= amount THEN 'REFUNDED' ELSE 'PARTIAL_REFUND' END
+  UPDATE payment SET pay_status = CASE WHEN v_refund >= amount THEN 'REFUNDED'
+                                       WHEN v_refund > 0 THEN 'PARTIAL_REFUND'
+                                       ELSE 'SUCCESS' END
   WHERE  pnr = p_pnr;
   DBMS_OUTPUT.PUT_LINE('PNR ' || p_pnr || ' cancelled, refund Rs.' || v_refund);
 
+  -- Promote earliest waitlisted passenger in FIFO order (loop guards against concurrent promotion)
   IF v_seat IS NOT NULL THEN
-    UPDATE reservation SET status = 'CONFIRMED', seat_id = v_seat
-    WHERE  pnr = (SELECT pnr FROM (SELECT pnr FROM reservation
-                                   WHERE  schedule_id = v_sched AND class_code = v_class AND status = 'WAITLIST'
-                                   ORDER  BY booking_date, pnr)
-                  WHERE ROWNUM = 1)
-    RETURNING pnr INTO v_promoted;
-    IF v_promoted IS NOT NULL THEN
-      DBMS_OUTPUT.PUT_LINE('Waitlisted PNR ' || v_promoted || ' confirmed on released seat ' || v_seat);
-    END IF;
+    v_promoted := NULL;
+    LOOP
+      BEGIN
+        SELECT pnr INTO v_promoted
+        FROM (
+          SELECT pnr
+          FROM   reservation
+          WHERE  schedule_id = v_sched
+          AND    class_code  = v_class
+          AND    status      = 'WAITLIST'
+          ORDER  BY booking_date, pnr
+        )
+        WHERE ROWNUM = 1;
+
+        UPDATE reservation
+        SET    status = 'CONFIRMED', seat_id = v_seat
+        WHERE  pnr = v_promoted
+        AND    status = 'WAITLIST';
+
+        IF SQL%ROWCOUNT > 0 THEN
+          DBMS_OUTPUT.PUT_LINE('Waitlisted PNR ' || v_promoted || ' confirmed on released seat ' || v_seat);
+          EXIT;
+        END IF;
+      EXCEPTION
+        WHEN NO_DATA_FOUND THEN
+          v_promoted := NULL;
+          EXIT;
+      END;
+    END LOOP;
   END IF;
 END;
 /
 
 -- 6.3 DEMO : a new journey of 12677 seven days from today; 9 passengers book the 8-seat EC coach
+-- Safe idempotency reset for demo journey 130
+DELETE FROM cancellation WHERE pnr IN (SELECT pnr FROM reservation WHERE schedule_id = 130);
+DELETE FROM payment WHERE pnr IN (SELECT pnr FROM reservation WHERE schedule_id = 130);
+DELETE FROM reservation WHERE schedule_id = 130;
+DELETE FROM train_schedule WHERE schedule_id = 130;
 INSERT INTO train_schedule VALUES (130, 12677, TRUNC(SYSDATE) + 7, 'SCHEDULED');
 
 DECLARE
@@ -1616,6 +1729,7 @@ WHERE  r.schedule_id = 130
 ORDER  BY r.pnr;
 
 COMMIT;
+
 
 -- =====================================================================================
 --  PART 7 : VIEWS (derived information reused by the analysis and the risk module)
@@ -2102,4 +2216,3 @@ FROM   capacity_risk_log l
 WHERE  l.run_date = TRUNC(SYSDATE)
 AND    l.risk_status <> fn_capacity_risk(l.occupancy_pct, l.cancellation_rate, l.demand_pct);
 ROLLBACK;
-EXIT

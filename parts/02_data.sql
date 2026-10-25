@@ -1060,3 +1060,5 @@ INSERT INTO reservation (pnr, passenger_id, schedule_id, class_code, seat_id, fr
 INSERT INTO reservation (pnr, passenger_id, schedule_id, class_code, seat_id, from_station, to_station, booking_date, status) VALUES (4200000766, 101, 127, 'CC', 2801, 'SBC', 'ERS', DATE '2026-10-16', 'CONFIRMED');
 INSERT INTO reservation (pnr, passenger_id, schedule_id, class_code, seat_id, from_station, to_station, booking_date, status) VALUES (4200000767, 17, 127, 'EC', 3006, 'ED', 'CBE', DATE '2026-10-18', 'CONFIRMED');
 INSERT INTO reservation (pnr, passenger_id, schedule_id, class_code, seat_id, from_station, to_station, booking_date, status) VALUES (4200000768, 15, 127, 'CC', 2805, 'SBC', 'PGT', DATE '2026-10-18', 'CONFIRMED');
+
+COMMIT;

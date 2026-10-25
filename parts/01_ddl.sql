@@ -41,6 +41,11 @@ BEGIN
             WHERE sequence_name IN ('SEQ_PNR','SEQ_PAYMENT','SEQ_CANCEL')) LOOP
     EXECUTE IMMEDIATE 'DROP SEQUENCE ' || s.sequence_name;
   END LOOP;
+  FOR p IN (SELECT object_name, object_type FROM user_objects
+            WHERE object_type IN ('PROCEDURE','FUNCTION')
+            AND object_name IN ('BOOK_TICKET','CANCEL_TICKET','PRC_CAPACITY_RISK_REPORT','FN_CAPACITY_RISK')) LOOP
+    EXECUTE IMMEDIATE 'DROP ' || p.object_type || ' ' || p.object_name;
+  END LOOP;
 END;
 /
 
@@ -178,6 +183,15 @@ CREATE UNIQUE INDEX ux_res_pass_journey
                   CASE WHEN status <> 'CANCELLED' THEN schedule_id  END);
 CREATE INDEX ix_res_schedule_status ON reservation (schedule_id, status);
 
+-- Supporting indexes on foreign keys to eliminate unindexed FK locking and speed up joins
+CREATE INDEX ix_res_passenger   ON reservation (passenger_id);
+CREATE INDEX ix_res_from_stn    ON reservation (from_station);
+CREATE INDEX ix_res_to_stn      ON reservation (to_station);
+CREATE INDEX ix_res_seat        ON reservation (seat_id);
+CREATE INDEX ix_rs_station      ON route_stop (station_code);
+CREATE INDEX ix_train_route     ON train (route_id);
+CREATE INDEX ix_coach_class     ON coach (class_code);
+
 -- 1.11 PAYMENT : exactly one payment per reservation (1:1)
 CREATE TABLE payment (
   payment_id     NUMBER(8)     CONSTRAINT pk_payment PRIMARY KEY,
@@ -271,7 +285,3 @@ BEGIN
   END IF;
 END;
 /
-
--- =====================================================================================
---  PART 2 : DML - SAMPLE DATA
--- =====================================================================================
