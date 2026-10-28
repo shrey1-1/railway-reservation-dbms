@@ -208,22 +208,19 @@ BEGIN
 
     v_seat := NULL;
     BEGIN
-      SELECT seat_id INTO v_seat
-      FROM (
-        SELECT st.seat_id
-        FROM   seat st
-               JOIN coach c          ON c.coach_id = st.coach_id
-               JOIN train_schedule s ON s.train_no = c.train_no
-        WHERE  s.schedule_id = p_schedule
-        AND    c.class_code  = p_class
-        AND    NOT EXISTS (SELECT 1 FROM reservation r
-                           WHERE r.schedule_id = p_schedule AND r.seat_id = st.seat_id)
-        ORDER BY st.seat_id
-      )
-      WHERE ROWNUM = 1;
+      SELECT st.seat_id INTO v_seat
+      FROM   seat st
+             JOIN coach c          ON c.coach_id = st.coach_id
+             JOIN train_schedule s ON s.train_no = c.train_no
+      WHERE  s.schedule_id = p_schedule
+      AND    c.class_code  = p_class
+      AND    NOT EXISTS (SELECT 1 FROM reservation r
+                         WHERE r.schedule_id = p_schedule AND r.seat_id = st.seat_id)
+      ORDER  BY st.seat_id
+      FETCH FIRST 1 ROW ONLY;
     EXCEPTION
       WHEN NO_DATA_FOUND THEN
-        v_seat := NULL;
+        NULL;  -- no free seat: v_seat stays NULL -> WAITLIST
     END;
 
     p_status := CASE WHEN v_seat IS NULL THEN 'WAITLIST' ELSE 'CONFIRMED' END;
@@ -303,19 +300,15 @@ BEGIN
 
   -- Promote earliest waitlisted passenger in FIFO order (loop guards against concurrent promotion)
   IF v_seat IS NOT NULL THEN
-    v_promoted := NULL;
     LOOP
       BEGIN
         SELECT pnr INTO v_promoted
-        FROM (
-          SELECT pnr
-          FROM   reservation
-          WHERE  schedule_id = v_sched
-          AND    class_code  = v_class
-          AND    status      = 'WAITLIST'
-          ORDER  BY booking_date, pnr
-        )
-        WHERE ROWNUM = 1;
+        FROM   reservation
+        WHERE  schedule_id = v_sched
+        AND    class_code  = v_class
+        AND    status      = 'WAITLIST'
+        ORDER  BY booking_date, pnr
+        FETCH FIRST 1 ROW ONLY;
 
         UPDATE reservation
         SET    status = 'CONFIRMED', seat_id = v_seat
@@ -328,7 +321,6 @@ BEGIN
         END IF;
       EXCEPTION
         WHEN NO_DATA_FOUND THEN
-          v_promoted := NULL;
           EXIT;
       END;
     END LOOP;

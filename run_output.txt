@@ -1,0 +1,3986 @@
+
+Session altered.
+
+
+PL/SQL procedure successfully completed.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Table created.
+
+
+Index created.
+
+
+Index created.
+
+
+Index created.
+
+
+Table created.
+
+
+Table created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Sequence created.
+
+
+Trigger created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+320 rows created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+768 rows created.
+
+
+35 rows created.
+
+
+Commit complete.
+
+
+TBL		 ROW_COUNT
+--------------- ----------
+STATION 		14
+ROUTE			 4
+ROUTE_STOP		21
+TRAIN			 9
+COACH_CLASS		 6
+COACH			30
+SEAT		       320
+TRAIN_SCHEDULE		27
+PASSENGER	       150
+RESERVATION	       768
+PAYMENT 	       768
+CANCELLATION		35
+
+12 rows selected.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+Table altered.
+
+
+9 rows updated.
+
+
+17 rows updated.
+
+
+PASSENGER_ID FULL_NAME			 AGE CONCESSION
+------------ -------------------- ---------- ----------
+	   3 Nithya Balaji		  20 STUDENT
+	   4 Manoj Chandran		  68 SENIOR
+	  10 Divya Arumugam		  21 STUDENT
+	  15 Ajay Reddy 		  19 STUDENT
+	  16 Krishna Velu		  76 SENIOR
+	  20 Charulatha Anand		  18 STUDENT
+	  23 Nandhini Prasad		  64 SENIOR
+	  25 Sneha Chandran		  20 STUDENT
+	  27 Nithya Natarajan		  21 STUDENT
+	  31 Arjun Rao			  22 STUDENT
+	  33 Deepak Mohan		  20 STUDENT
+	  34 Swathi Raman		  20 STUDENT
+	  56 Deepa Sundar		  21 STUDENT
+	  58 Suresh Elango		  64 SENIOR
+	  69 Aishwarya Thomas		  21 STUDENT
+	  72 Ramya Elango		  22 STUDENT
+	  74 Rajesh Anand		  19 STUDENT
+	  77 Krishna Krishnan		  67 SENIOR
+	  93 Yuvan Arumugam		  21 STUDENT
+	 111 Siddharth Iyer		  65 SENIOR
+	 116 Kalpana Selvam		  19 STUDENT
+	 120 Ramesh Raghavan		  72 SENIOR
+	 128 Hari Chandran		  22 STUDENT
+	 134 Harini Sankar		  72 SENIOR
+	 139 Anitha Pillai		  71 SENIOR
+	 147 Aishwarya Pandian		  19 STUDENT
+
+26 rows selected.
+
+
+1 row updated.
+
+
+PL/SQL procedure successfully completed.
+
+
+       PNR FROM_ TO_ST	     FARE	PAID
+---------- ----- ----- ---------- ----------
+4200000071 MAS	 SBC	      561	 561
+
+1 row selected.
+
+
+1 row updated.
+
+
+1 row updated.
+
+
+       PNR FROM_ TO_ST	     FARE	PAID
+---------- ----- ----- ---------- ----------
+4200000071 KPD	 SBC	      374	 374
+
+1 row selected.
+
+
+1 row created.
+
+
+1 row deleted.
+
+
+Commit complete.
+
+5.1 invalid phone	-> ORA-02290: check constraint (RAIL_CS6.CK_PASS_PHONE) violated
+
+PL/SQL procedure successfully completed.
+
+5.2 double seat booking -> ORA-00001: unique constraint (RAIL_CS6.UX_RES_SEAT_JOURNEY) violated on table RAIL_CS6.RESERVATION columns (SYS_NC00011$, SEAT_ID)
+ORA-03301: (ORA-00001 details) row with column values
+(SYS_NC00011$:101, SEAT_ID:101) already exists
+
+PL/SQL procedure successfully completed.
+
+5.3 seat of other train -> ORA-20003: Seat 2801 does not belong to train 12639 / class CC
+ORA-06512: at "RAIL_CS6.TRG_RESERVATION_VALIDATE", line 39
+ORA-04088: error during execution of trigger
+'RAIL_CS6.TRG_RESERVATION_VALIDATE'
+
+PL/SQL procedure successfully completed.
+
+5.4 wrong direction	-> ORA-20002: Boarding station must come before destination on the route
+ORA-06512: at "RAIL_CS6.TRG_RESERVATION_VALIDATE", line 30
+ORA-04088: error during execution of trigger
+'RAIL_CS6.TRG_RESERVATION_VALIDATE'
+
+PL/SQL procedure successfully completed.
+
+5.5 confirmed, no seat	-> ORA-02290: check constraint (RAIL_CS6.CK_RES_SEAT_STATUS) violated
+
+PL/SQL procedure successfully completed.
+
+5.6 delete parent row	-> ORA-02292: integrity constraint (RAIL_CS6.FK_RES_PASS) violated - child record found
+
+PL/SQL procedure successfully completed.
+
+5.7 unknown station	-> ORA-02291: integrity constraint (RAIL_CS6.FK_RS_STATION) violated - parent key not found
+
+PL/SQL procedure successfully completed.
+
+
+Procedure created.
+
+
+Procedure created.
+
+
+1 row created.
+
+Passenger 11 -> PNR 4200001001 CONFIRMED
+Passenger 12 -> PNR 4200001002 CONFIRMED
+Passenger 13 -> PNR 4200001003 CONFIRMED
+Passenger 14 -> PNR 4200001004 CONFIRMED
+Passenger 15 -> PNR 4200001005 CONFIRMED
+Passenger 16 -> PNR 4200001006 CONFIRMED
+Passenger 17 -> PNR 4200001007 CONFIRMED
+Passenger 18 -> PNR 4200001008 CONFIRMED
+Passenger 19 -> PNR 4200001009 WAITLIST
+
+PL/SQL procedure successfully completed.
+
+PNR 4200001001 cancelled, refund Rs.1588.5
+Waitlisted PNR 4200001009 confirmed on released seat 3001
+
+PL/SQL procedure successfully completed.
+
+
+       PNR FULL_NAME		SEAT			   STATUS	    FARE PAY_STATUS	REFUND_AMOUNT
+---------- -------------------- -------------------------- ---------- ---------- -------------- -------------
+4200001001 Padma Kumar		-			   CANCELLED	    1765 PARTIAL_REFUND        1588.5
+4200001002 Deepa Anand		E1-2			   CONFIRMED	    1765 SUCCESS
+4200001003 Charulatha Sundar	E1-3			   CONFIRMED	    1765 SUCCESS
+4200001004 Asha Mani		E1-4			   CONFIRMED	    1765 SUCCESS
+4200001005 Ajay Reddy		E1-5			   CONFIRMED	    1765 SUCCESS
+4200001006 Krishna Velu 	E1-6			   CONFIRMED	    1765 SUCCESS
+4200001007 Revathi Selvam	E1-7			   CONFIRMED	    1765 SUCCESS
+4200001008 Asha Hegde		E1-8			   CONFIRMED	    1765 SUCCESS
+4200001009 Sangeetha Mani	E1-1			   CONFIRMED	    1765 SUCCESS
+
+9 rows selected.
+
+
+Commit complete.
+
+
+View created.
+
+
+View created.
+
+
+View created.
+
+
+SCHEDULE_ID   TRAIN_NO TRAIN_NAME	      ROUTE_ID JOURNEY_DAT SCHED_STAT	CAPACITY TOTAL_BOOKINGS SEATS_OCCUPIED WAITLISTED  CANCELLED OCCUPANCY_PCT CANCELLATION_RATE	REVENUE
+----------- ---------- -------------------- ---------- ----------- ---------- ---------- -------------- -------------- ---------- ---------- ------------- ----------------- ----------
+	107	 12027 Chennai Shatabdi 	     1 22-SEP-2026 COMPLETED	      32	     39 	    32		2	   5	       100	       12.82	21269.6
+	108	 12027 Chennai Shatabdi 	     1 06-OCT-2026 COMPLETED	      32	     38 	    31		2	   5	     96.88	       13.16	19337.6
+	109	 12027 Chennai Shatabdi 	     1 23-OCT-2026 SCHEDULED	      32	     35 	    30		1	   4	     93.75	       11.43	  19110
+	104	 12607 Lalbagh Express		     1 21-SEP-2026 COMPLETED	      36	     25 	    24		0	   1	     66.67		   4	12413.1
+	105	 12607 Lalbagh Express		     1 05-OCT-2026 COMPLETED	      36	     24 	    23		0	   1	     63.89		4.17	11755.1
+	106	 12607 Lalbagh Express		     1 22-OCT-2026 SCHEDULED	      36	     22 	    22		0	   0	     61.11		   0	  11113
+	110	 12635 Vaigai Express		     2 23-SEP-2026 COMPLETED	      36	     32 	    31		0	   1	     86.11		3.13	22906.5
+	111	 12635 Vaigai Express		     2 07-OCT-2026 COMPLETED	      36	     32 	    30		0	   2	     83.33		6.25	  19846
+	112	 12635 Vaigai Express		     2 24-OCT-2026 SCHEDULED	      36	     29 	    28		0	   1	     77.78		3.45	15273.5
+	113	 12637 Pandian Express		     2 24-SEP-2026 COMPLETED	      42	     45 	    42		3	   0	       100		   0	  24272
+	114	 12637 Pandian Express		     2 08-OCT-2026 COMPLETED	      42	     45 	    41		3	   1	     97.62		2.22	  21590
+	115	 12637 Pandian Express		     2 25-OCT-2026 SCHEDULED	      42	     41 	    39		2	   0	     92.86		   0	  23508
+	101	 12639 Brindavan Express	     1 20-SEP-2026 COMPLETED	      32	     36 	    32		3	   1	       100		2.78	18560.1
+	102	 12639 Brindavan Express	     1 04-OCT-2026 COMPLETED	      32	     34 	    31		2	   1	     96.88		2.94	16818.2
+	103	 12639 Brindavan Express	     1 21-OCT-2026 SCHEDULED	      32	     32 	    30		2	   0	     93.75		   0	  17657
+	122	 12671 Nilgiri Express		     3 27-SEP-2026 COMPLETED	      46	     30 	    29		0	   1	     63.04		3.33	20057.1
+	123	 12671 Nilgiri Express		     3 11-OCT-2026 COMPLETED	      46	     29 	    27		0	   2	      58.7		 6.9	13470.1
+	124	 12671 Nilgiri Express		     3 23-OCT-2026 SCHEDULED	      46	     26 	    26		0	   0	     56.52		   0	  20228
+	119	 12675 Kovai Express		     3 26-SEP-2026 COMPLETED	      32	     27 	    26		0	   1	     81.25		 3.7	20686.6
+	120	 12675 Kovai Express		     3 10-OCT-2026 COMPLETED	      32	     26 	    25		0	   1	     78.13		3.85	20163.2
+	121	 12675 Kovai Express		     3 22-OCT-2026 SCHEDULED	      32	     25 	    24		0	   1		75		   4	19657.6
+	125	 12677 Ernakulam Intercity	     4 28-SEP-2026 COMPLETED	      32	     17 	    16		0	   1		50		5.88	16409.3
+	126	 12677 Ernakulam Intercity	     4 12-OCT-2026 COMPLETED	      32	     14 	    14		0	   0	     43.75		   0	  12940
+	127	 12677 Ernakulam Intercity	     4 24-OCT-2026 SCHEDULED	      32	     14 	    13		0	   1	     40.63		7.14	12327.5
+	130	 12677 Ernakulam Intercity	     4 04-NOV-2026 SCHEDULED	      32	      9 	     8		0	   1		25	       11.11	14296.5
+	116	 22671 Madurai Tejas		     2 25-SEP-2026 COMPLETED	      32	     19 	    17		0	   2	     53.13	       10.53	13360.5
+	117	 22671 Madurai Tejas		     2 09-OCT-2026 COMPLETED	      32	     17 	    16		0	   1		50		5.88	  11714
+	118	 22671 Madurai Tejas		     2 21-OCT-2026 SCHEDULED	      32	     15 	    14		0	   1	     43.75		6.67	11091.4
+
+28 rows selected.
+
+
+  TRAIN_NO TRAIN_NAME		  ROUTE_ID ROUTE_LABEL		    JOURNEYS CAPACITY_OFFERED SEATS_OCCUPIED WAITLISTED  CANCELLED TOTAL_BOOKINGS OCCUPANCY_PCT CANCELLATION_RATE DEMAND_PCT	REVENUE
+---------- -------------------- ---------- ---------------------- ---------- ---------------- -------------- ---------- ---------- -------------- ------------- ----------------- ---------- ----------
+     12027 Chennai Shatabdi		 1 Chennai-Bengaluru		   3		   96		  93	      5 	14	      112	  96.88 	     12.5     102.08	59717.2
+     12639 Brindavan Express		 1 Chennai-Bengaluru		   3		   96		  93	      7 	 2	      102	  96.88 	     1.96     104.17	53035.3
+     12637 Pandian Express		 2 Chennai-Madurai		   3		  126		 122	      8 	 1	      131	  96.83 	      .76     103.17	  69370
+     12635 Vaigai Express		 2 Chennai-Madurai		   3		  108		  89	      0 	 4	       93	  82.41 	      4.3      82.41	  58026
+     12675 Kovai Express		 3 Chennai-Coimbatore		   3		   96		  75	      0 	 3	       78	  78.13 	     3.85      78.13	60507.4
+     12607 Lalbagh Express		 1 Chennai-Bengaluru		   3		  108		  69	      0 	 2	       71	  63.89 	     2.82      63.89	35281.2
+     12671 Nilgiri Express		 3 Chennai-Coimbatore		   3		  138		  82	      0 	 3	       85	  59.42 	     3.53      59.42	53755.2
+     22671 Madurai Tejas		 2 Chennai-Madurai		   3		   96		  47	      0 	 4	       51	  48.96 	     7.84      48.96	36165.9
+     12677 Ernakulam Intercity		 4 Bengaluru-Kochi		   4		  128		  51	      0 	 3	       54	  39.84 	     5.56      39.84	55973.3
+
+9 rows selected.
+
+
+  TRAIN_NO TRAIN_NAME		  BOOKINGS  COMPLETED  CONFIRMED   WAITLIST  CANCELLED	 AVG_FARE FIRST_BOOKI LAST_BOOKIN
+---------- -------------------- ---------- ---------- ---------- ---------- ---------- ---------- ----------- -----------
+     12637 Pandian Express	       131	   83	      39	  8	     1	   548.83 10-AUG-2026 18-OCT-2026
+     12027 Chennai Shatabdi	       112	   63	      30	  5	    14	   617.38 08-AUG-2026 17-OCT-2026
+     12639 Brindavan Express	       102	   63	      30	  7	     2	   562.35 11-AUG-2026 18-OCT-2026
+     12635 Vaigai Express		93	   61	      28	  0	     4	   653.16 12-AUG-2026 17-OCT-2026
+     12671 Nilgiri Express		85	   56	      26	  0	     3	   648.32 14-AUG-2026 18-OCT-2026
+     12675 Kovai Express		78	   51	      24	  0	     3	   796.67 12-AUG-2026 19-OCT-2026
+     12607 Lalbagh Express		71	   47	      22	  0	     2	   511.14 09-AUG-2026 19-OCT-2026
+     12677 Ernakulam Intercity		54	   30	      21	  0	     3	  1110.26 15-AUG-2026 28-OCT-2026
+     22671 Madurai Tejas		51	   33	      14	  0	     4	   760.29 11-AUG-2026 15-OCT-2026
+
+9 rows selected.
+
+
+STATI STATION_NAME		  CITY			BOARDED   ALIGHTED TOTAL_FOOTFALL
+----- --------------------------- ------------------ ---------- ---------- --------------
+MAS   Chennai Central		  Chennai		    557 	 0	      557
+SBC   KSR Bengaluru City	  Bengaluru		     43        228	      271
+MDU   Madurai Junction		  Madurai		      0        226	      226
+CBE   Coimbatore Junction	  Coimbatore		      2        143	      145
+ERS   Ernakulam Junction	  Kochi 		      0 	45	       45
+KPD   Katpadi Junction		  Vellore		     32 	10	       42
+JTJ   Jolarpettai Junction	  Jolarpettai		     22 	18	       40
+DG    Dindigul Junction 	  Dindigul		     18 	20	       38
+ED    Erode Junction		  Erode 		     11 	11	       22
+TPJ   Tiruchchirappalli Junction  Tiruchirappalli	     14 	 6	       20
+VM    Villupuram Junction	  Villupuram		     11 	 6	       17
+SA    Salem Junction		  Salem 		     10 	 6	       16
+PGT   Palakkad Junction 	  Palakkad		      1 	 2		3
+TVC   Thiruvananthapuram Central  Thiruvananthapuram	      0 	 0		0
+
+14 rows selected.
+
+
+ROUTE_NAME	       DISTANCE_KM     TRAINS	JOURNEYS SEATS_OFFERED SEATS_SOLD ROUTE_OCCUPANCY_PCT	 REVENUE
+---------------------- ----------- ---------- ---------- ------------- ---------- ------------------- ----------
+Chennai - Bengaluru	       359	    3	       9	   300	      255		   85	148033.7
+Chennai - Madurai	       493	    3	       9	   330	      258		78.18	163561.9
+Chennai - Coimbatore	       494	    2	       6	   234	      157		67.09	114262.6
+Bengaluru - Ernakulam	       588	    1	       4	   128	       51		39.84	 55973.3
+
+4 rows selected.
+
+
+  TRAIN_NO TRAIN_NAME		COAC CLA SEAT_JOURNEYS	 OCCUPIED OCCUPANCY_PCT
+---------- -------------------- ---- --- ------------- ---------- -------------
+     12027 Chennai Shatabdi	C1   CC 	    36	       35	   97.2
+     12027 Chennai Shatabdi	C2   CC 	    36	       36	    100
+     12027 Chennai Shatabdi	E1   EC 	    24	       22	   91.7
+     12607 Lalbagh Express	C1   CC 	    36	       22	   61.1
+     12607 Lalbagh Express	C2   CC 	    36	       25	   69.4
+     12607 Lalbagh Express	C3   CC 	    36	       22	   61.1
+     12635 Vaigai Express	C1   CC 	    36	       29	   80.6
+     12635 Vaigai Express	C2   CC 	    36	       30	   83.3
+     12635 Vaigai Express	C3   CC 	    36	       30	   83.3
+     12637 Pandian Express	A1   2A 	    24	       23	   95.8
+     12637 Pandian Express	B1   3A 	    30	       29	   96.7
+     12637 Pandian Express	S1   SL 	    36	       35	   97.2
+     12637 Pandian Express	S2   SL 	    36	       35	   97.2
+     12639 Brindavan Express	C1   CC 	    36	       36	    100
+     12639 Brindavan Express	C2   CC 	    36	       35	   97.2
+     12639 Brindavan Express	E1   EC 	    24	       22	   91.7
+     12671 Nilgiri Express	A1   2A 	    24	       16	   66.7
+     12671 Nilgiri Express	B1   3A 	    30	       14	   46.7
+     12671 Nilgiri Express	H1   1A 	    12		5	   41.7
+     12671 Nilgiri Express	S1   SL 	    36	       19	   52.8
+     12671 Nilgiri Express	S2   SL 	    36	       28	   77.8
+     12675 Kovai Express	C1   CC 	    36	       29	   80.6
+     12675 Kovai Express	C2   CC 	    36	       28	   77.8
+     12675 Kovai Express	E1   EC 	    24	       18	     75
+     12677 Ernakulam Intercity	C1   CC 	    48	       17	   35.4
+     12677 Ernakulam Intercity	C2   CC 	    48	       15	   31.3
+     12677 Ernakulam Intercity	E1   EC 	    32	       19	   59.4
+     22671 Madurai Tejas	C1   CC 	    36	       22	   61.1
+     22671 Madurai Tejas	C2   CC 	    36	       17	   47.2
+     22671 Madurai Tejas	E1   EC 	    24		8	   33.3
+
+30 rows selected.
+
+
+  TRAIN_NO TRAIN_NAME		  BOOKINGS CANCELLATIONS CANCEL_RATE_PCT   REFUNDED CHARGES_RETAINED AVG_DAYS_BEFORE_JOURNEY
+---------- -------------------- ---------- ------------- --------------- ---------- ---------------- -----------------------
+     12027 Chennai Shatabdi	       112	      14	    12.5     6958.8	       773.2			13.1
+     22671 Madurai Tejas		51	       4	    7.84     2609.1	       289.9			13.3
+     12677 Ernakulam Intercity		54	       3	    5.56     3980.7	       442.3			  12
+     12635 Vaigai Express		93	       4	     4.3       2718		 302			16.3
+     12675 Kovai Express		78	       3	    3.85     1632.6	       181.4			19.3
+     12671 Nilgiri Express		85	       3	    3.53     1351.8	       150.2			   9
+     12607 Lalbagh Express		71	       2	    2.82     1009.8	       112.2			  16
+     12639 Brindavan Express	       102	       2	    1.96      731.7		81.3			  12
+     12637 Pandian Express	       131	       1	     .76	306		  34			  13
+
+9 rows selected.
+
+
+REASON			 CANCELLATIONS	SHARE_PCT   REFUNDED
+------------------------ ------------- ---------- ----------
+Change of plans 		    10	     27.8     6794.1
+Booked alternate travel 	     9	       25     5880.6
+Official work			     9	       25     4386.6
+Medical emergency		     8	     22.2     4237.2
+
+4 rows selected.
+
+
+ROUTE_NAME	       PASSENGERS DEMAND_RANK
+---------------------- ---------- -----------
+Chennai - Bengaluru	      267	    1
+Chennai - Madurai	      266	    2
+Chennai - Coimbatore	      157	    3
+Bengaluru - Ernakulam	       51	    4
+
+4 rows selected.
+
+
+SEGMENT 		       PASSENGERS
+------------------------------ ----------
+Chennai -> Madurai		      201
+Chennai -> Bengaluru		      195
+Chennai -> Coimbatore		      125
+Bengaluru -> Kochi		       41
+Dindigul -> Madurai		       18
+
+5 rows selected.
+
+
+TRAVEL_DAY   PASSENGERS  SHARE_PCT
+------------ ---------- ----------
+SUN		    158       21.9
+THU		    129       17.9
+WED		    113       15.7
+SAT		     92       12.8
+FRI		     89       12.3
+MON		     77       10.7
+TUE		     63        8.7
+
+7 rows selected.
+
+
+POSITIO   TRAIN_NO TRAIN_NAME		ROUTE_LABEL	       OCCUPANCY_PCT
+------- ---------- -------------------- ---------------------- -------------
+LOWEST	     12677 Ernakulam Intercity	Bengaluru-Kochi 	       39.84
+HIGHEST      12639 Brindavan Express	Chennai-Bengaluru	       96.88
+HIGHEST      12027 Chennai Shatabdi	Chennai-Bengaluru	       96.88
+
+3 rows selected.
+
+
+PASSENGER_ID FULL_NAME		  HOME_CITY		TRIPS KM_TRAVELLED TOTAL_SPENT TRAVELLER_
+------------ -------------------- ---------------- ---------- ------------ ----------- ----------
+	   3 Nithya Balaji	  Chennai		   14	      5187	  8957 FREQUENT
+	  15 Ajay Reddy 	  Chennai		   13	      5332	 11039 FREQUENT
+	   6 Janani Shankar	  Bengaluru		   12	      4781	  7515 FREQUENT
+	  13 Charulatha Sundar	  Bengaluru		   11	      4154	  8358 FREQUENT
+	  19 Sangeetha Mani	  Dindigul		   11	      4207	  7897 FREQUENT
+	   8 Kishore Kumar	  Kochi 		   11	      3634	  5662 FREQUENT
+	  64 Krishna Rajan	  Chennai		   10	      4246	  6788 FREQUENT
+	   9 Fathima Elango	  Chennai		   10	      4049	  6720 FREQUENT
+	   5 Priya Pandian	  Tiruchirappalli	   10	      3402	  5116 FREQUENT
+	   2 Ajay Thomas	  Vellore		    9	      4131	  8489 FREQUENT
+	  12 Deepa Anand	  Kochi 		    9	      3785	  8290 FREQUENT
+	   4 Manoj Chandran	  Chennai		    8	      2690	  5465 FREQUENT
+	  31 Arjun Rao		  Vellore		    8	      3228	  5300 FREQUENT
+	 102 Anand Nair 	  Chennai		    8	      3145	  4716 FREQUENT
+	  11 Padma Kumar	  Madurai		    8	      3441	  3649 FREQUENT
+	  14 Asha Mani		  Kochi 		    7	      3010	  6771 FREQUENT
+	  17 Revathi Selvam	  Erode 		    7	      2913	  5829 FREQUENT
+	  88 Indhu Velu 	  Coimbatore		    7	      3320	  5333 FREQUENT
+	  37 Abdul Rajan	  Chennai		    7	      2874	  5255 FREQUENT
+	  42 Anand Velu 	  Madurai		    7	      2310	  4908 FREQUENT
+	  63 Harini Nair	  Bengaluru		    7	      2007	  4906 FREQUENT
+	 120 Ramesh Raghavan	  Coimbatore		    7	      3150	  4778 FREQUENT
+	   1 Balaji Mani	  Kochi 		    7	      2676	  4703 FREQUENT
+	  10 Divya Arumugam	  Madurai		    7	      2830	  4469 FREQUENT
+	 145 Anand Srinivasan	  Coimbatore		    7	      2872	  3695 FREQUENT
+	  86 Deepak Shankar	  Bengaluru		    7	      2848	  3511 FREQUENT
+	   7 Gayathri Varma	  Palakkad		    7	      2791	  3498 FREQUENT
+	  41 Prakash Murugan	  Chennai		    7	      2751	  3440 FREQUENT
+	 118 Anitha Iyer	  Chennai		    6	      2786	  6393 FREQUENT
+	  30 Swathi Rao 	  Chennai		    6	      2561	  5745 FREQUENT
+	 109 Ashwin Raghavan	  Kochi 		    6	      2432	  5743 FREQUENT
+	  18 Asha Hegde 	  Bengaluru		    6	      2651	  5670 FREQUENT
+	 105 Ramesh Chandran	  Bengaluru		    6	      2692	  5582 FREQUENT
+	 139 Anitha Pillai	  Kochi 		    6	      2920	  5175 FREQUENT
+	  74 Rajesh Anand	  Tiruchirappalli	    6	      2260	  5115 FREQUENT
+	 110 Ramesh Krishnan	  Chennai		    6	      2376	  4731 FREQUENT
+	 147 Aishwarya Pandian	  Madurai		    6	      2493	  4570 FREQUENT
+	 116 Kalpana Selvam	  Kochi 		    6	      2012	  4442 FREQUENT
+	 144 Hari Thomas	  Chennai		    6	      2467	  4210 FREQUENT
+	 108 Indhu Rajan	  Palakkad		    6	      2691	  4025 FREQUENT
+	 121 Ramya Pandian	  Madurai		    6	      2529	  3950 FREQUENT
+	 104 Sangeetha Subramania Palakkad		    6	      1991	  3669 FREQUENT
+	     n
+
+	  25 Sneha Chandran	  Madurai		    6	      2562	  3541 FREQUENT
+	  80 Nandhini Menon	  Palakkad		    6	      2205	  3470 FREQUENT
+	 142 Joseph Kumar	  Vellore		    6	      1844	  3368 FREQUENT
+	  73 Yuvan Raghavan	  Salem 		    6	      2721	  3356 FREQUENT
+	  32 Sanjay Balaji	  Chennai		    6	      2343	  3349 FREQUENT
+	  68 Aishwarya Iyer	  Chennai		    6	      2825	  3092 FREQUENT
+	 133 Bhavani Raman	  Bengaluru		    6	      1630	  2918 FREQUENT
+	  70 Pradeep Balaji	  Chennai		    6	      2344	  2810 FREQUENT
+	 148 Sneha Pandian	  Chennai		    6	      2338	  2789 FREQUENT
+	  84 Pooja Thomas	  Tiruchirappalli	    6	      1912	  2529 FREQUENT
+	  56 Deepa Sundar	  Kochi 		    5	      2334	  4850 REGULAR
+	  16 Krishna Velu	  Chennai		    5	      2028	  4221 REGULAR
+	  36 Harini Mani	  Bengaluru		    5	      2427	  4177 REGULAR
+	  35 Harini Hegde	  Bengaluru		    5	      2199	  3918 REGULAR
+	  59 Ishwarya Hegde	  Tiruchirappalli	    5	      2069	  3899 REGULAR
+	 125 Deepa Raghavan	  Bengaluru		    5	      2102	  3643 REGULAR
+	  87 Ajay Krishnan	  Chennai		    5	      2172	  3639 REGULAR
+	  79 Ramya Krishnan	  Kochi 		    5	      2199	  3562 REGULAR
+	  40 Pradeep Varma	  Chennai		    5	      2199	  3514 REGULAR
+	 100 Deepak Venkatesh	  Dindigul		    5	      1799	  3446 REGULAR
+	  98 Preethi Thomas	  Chennai		    5	      2137	  3418 REGULAR
+	  44 Saranya Rajan	  Chennai		    5	      1799	  3303 REGULAR
+	  85 Gautham Natarajan	  Kochi 		    5	      2198	  3145 REGULAR
+	 141 Rajesh Venkatesh	  Salem 		    5	      1789	  3062 REGULAR
+	  23 Nandhini Prasad	  Dindigul		    5	      2197	  2972 REGULAR
+	  89 Ramya Reddy	  Erode 		    5	      1794	  2803 REGULAR
+	 106 Gayathri Reddy	  Madurai		    5	      1901	  2715 REGULAR
+	 112 Janani Hegde	  Chennai		    5	      2015	  2707 REGULAR
+	  27 Nithya Natarajan	  Coimbatore		    5	      1421	  2685 REGULAR
+	  22 Rajesh Sundar	  Coimbatore		    5	      2018	  2662 REGULAR
+	  61 Indhu Venkatesh	  Chennai		    5	      1632	  2643 REGULAR
+	  91 Meera Raman	  Erode 		    5	      1939	  2597 REGULAR
+	 135 Asha Velu		  Madurai		    5	      1582	  2496 REGULAR
+	  43 Nithya Raghavan	  Chennai		    5	      1850	  2469 REGULAR
+	  45 Krishna Sankar	  Coimbatore		    5	      1838	  2451 REGULAR
+	  21 Shalini Raman	  Chennai		    5	      1804	  1891 REGULAR
+	 126 Aishwarya Babu	  Kochi 		    4	      1800	  4172 REGULAR
+	  33 Deepak Mohan	  Tiruchirappalli	    4	      1840	  3792 REGULAR
+	  20 Charulatha Anand	  Bengaluru		    4	      1840	  3368 REGULAR
+	 129 Charulatha Shankar   Chennai		    4	      1654	  3272 REGULAR
+	  62 Janani Chandran	  Vellore		    4	      1840	  3150 REGULAR
+	 124 Harini Anand	  Bengaluru		    4	      1573	  3126 REGULAR
+	  72 Ramya Elango	  Salem 		    4	      1505	  3123 REGULAR
+	  39 Bharath Pillai	  Madurai		    4	      1571	  3104 REGULAR
+	  50 Ramesh Natarajan	  Madurai		    4	      1816	  2912 REGULAR
+	 117 Prakash Elango	  Vellore		    4	      1436	  2784 REGULAR
+	  93 Yuvan Arumugam	  Bengaluru		    4	      1705	  2747 REGULAR
+	 134 Harini Sankar	  Vellore		    4	      1204	  2686 REGULAR
+	  76 Usha Chandran	  Madurai		    4	      1934	  2675 REGULAR
+	 122 Bhavani Pillai	  Coimbatore		    4	      1934	  2550 REGULAR
+	  38 Sowmya Thomas	  Madurai		    4	      1839	  2412 REGULAR
+	  66 Anand Raghavan	  Bengaluru		    4	      1658	  2383 REGULAR
+	 136 Rahul Srinivasan	  Erode 		    4	      1041	  2337 REGULAR
+	 113 Gautham Nair	  Madurai		    4	      1073	  2320 REGULAR
+	  26 Lakshmi Rao	  Dindigul		    4	      1540	  2082 REGULAR
+	  99 Suresh Ganesh	  Madurai		    4	      1371	  1734 REGULAR
+	 132 Gayathri Sankar	  Chennai		    4	      1639	  1707 REGULAR
+	  47 Ashwin Subramanian   Erode 		    4	      1155	  1420 REGULAR
+	  77 Krishna Krishnan	  Bengaluru		    3	      1211	  2945 REGULAR
+	  24 Saranya Mani	  Coimbatore		    3	      1346	  2934 REGULAR
+	 138 Rajesh Mani	  Bengaluru		    3	      1212	  2615 REGULAR
+	  92 Surya Menon	  Bengaluru		    3	      1212	  2615 REGULAR
+	  96 Sangeetha Pillai	  Chennai		    3	      1211	  2612 REGULAR
+	  57 Lakshmi Venkatesh	  Bengaluru		    3	      1574	  2403 REGULAR
+	 107 Arjun Velu 	  Coimbatore		    3	      1574	  2403 REGULAR
+	  55 Balaji Sundar	  Coimbatore		    3	      1345	  2243 REGULAR
+	 128 Hari Chandran	  Vellore		    3	       748	  2099 REGULAR
+	 130 Ishwarya Sankar	  Chennai		    3	      1258	  2040 REGULAR
+	  34 Swathi Raman	  Madurai		    3	       914	  1973 REGULAR
+	  51 Padma Hegde	  Coimbatore		    3	       784	  1890 REGULAR
+	  97 Swathi Pandian	  Chennai		    3	      1441	  1795 REGULAR
+	  83 Prakash Thomas	  Madurai		    3	      1347	  1658 REGULAR
+	  53 Bhavani Prasad	  Coimbatore		    3	      1133	  1521 REGULAR
+	  65 Prakash Natarajan	  Erode 		    3	       931	  1471 REGULAR
+	 146 Vidya Murugan	  Madurai		    3	      1211	  1462 REGULAR
+	  54 Ishwarya Chandran	  Coimbatore		    3	      1133	  1348 REGULAR
+	  95 Saranya Elango	  Kochi 		    3	       886	  1335 REGULAR
+	 111 Siddharth Iyer	  Madurai		    3	      1072	  1259 REGULAR
+	 140 Pradeep Babu	  Madurai		    3	      1049	  1156 REGULAR
+	  78 Fathima Selvam	  Bengaluru		    3	       999	  1154 REGULAR
+	 149 Surya Arumugam	  Bengaluru		    3	       521	   776 REGULAR
+	 123 Usha Venkatesh	  Chennai		    2	       650	  2256 OCCASIONAL
+	  48 Ganesh Pillai	  Coimbatore		    2	       986	  2038 OCCASIONAL
+	  60 Karthik Murugan	  Chennai		    2	       640	  1745 OCCASIONAL
+	  94 Vidya Pillai	  Madurai		    2	      1081	  1648 OCCASIONAL
+	  49 Gautham Sundar	  Bengaluru		    2	       986	  1623 OCCASIONAL
+	 137 Hari Raghavan	  Chennai		    2	       589	  1475 OCCASIONAL
+	 101 Sneha Shankar	  Madurai		    2	       947	  1454 OCCASIONAL
+	  81 Ramesh Selvam	  Chennai		    2	       853	  1317 OCCASIONAL
+	  75 Siddharth Mani	  Tiruchirappalli	    2	       853	  1317 OCCASIONAL
+	  28 Kavya Mohan	  Coimbatore		    2	       852	  1316 OCCASIONAL
+	 114 Lakshmi Iyer	  Madurai		    2	       766	  1126 OCCASIONAL
+	  67 Mohammed Raghavan	  Chennai		    2	       594	  1106 OCCASIONAL
+	 115 Sangeetha Selvam	  Madurai		    2	       540	  1064 OCCASIONAL
+	  82 Sangeetha Krishnan   Coimbatore		    2	       852	   901 OCCASIONAL
+	 150 Nandhini Arumugam	  Bengaluru		    2	       852	   901 OCCASIONAL
+	  52 Tarun Ganesh	  Chennai		    2	       653	   879 OCCASIONAL
+	 103 Tarun Sankar	  Kochi 		    2	       488	   788 OCCASIONAL
+	 131 Indhu Sundar	  Bengaluru		    2	       443	   723 OCCASIONAL
+	  69 Aishwarya Thomas	  Chennai		    2	       622	   567 OCCASIONAL
+	 127 Revathi Sankar	  Chennai		    2	       307	   525 OCCASIONAL
+	  29 Lakshmi Pillai	  Palakkad		    2	       588	   517 OCCASIONAL
+	  58 Suresh Elango	  Erode 		    1	       359	   561 OCCASIONAL
+	 119 Sangeetha Prasad	  Tiruchirappalli	    1	       359	   561 OCCASIONAL
+	  46 Aravind Shankar	  Chennai		    1	       359	   561 OCCASIONAL
+	 143 Preethi Reddy	  Chennai		    1	       359	   561 OCCASIONAL
+	  71 Deepa Nair 	  Tiruchirappalli	    1	       100	   185 OCCASIONAL
+
+149 rows selected.
+
+
+ROUTE_NAME	       TRAIN_NAME	     COLLECTED	 REFUNDED NET_REVENUE
+---------------------- -------------------- ---------- ---------- -----------
+Bengaluru - Ernakulam  Ernakulam Intercity	 59954	   3980.7     55973.3
+Bengaluru - Ernakulam  -- route total --	 59954	   3980.7     55973.3
+Chennai - Bengaluru    Chennai Shatabdi 	 69147	   9202.8     59944.2
+Chennai - Bengaluru    Brindavan Express	 57360	   3536.7     53823.3
+Chennai - Bengaluru    Lalbagh Express		 36291	   1009.8     35281.2
+Chennai - Bengaluru    -- route total --	162798	  13749.3    149048.7
+Chennai - Coimbatore   Kovai Express		 62140	   1632.6     60507.4
+Chennai - Coimbatore   Nilgiri Express		 55107	   1351.8     53755.2
+Chennai - Coimbatore   -- route total --	117247	   2984.4    114262.6
+Chennai - Madurai      Pandian Express		 71897	     2127	69770
+Chennai - Madurai      Vaigai Express		 60744	     2718	58026
+Chennai - Madurai      Madurai Tejas		 38775	   2609.1     36165.9
+Chennai - Madurai      -- route total --	171416	   7454.1    163961.9
+** ALL ROUTES **				511415	  28168.5    483246.5
+
+14 rows selected.
+
+
+ROUTE_NAME		 JOURNEYS SOLD_OUT_JOURNEYS UNSERVED_PASSENGERS OCCUPANCY_PCT
+---------------------- ---------- ----------------- ------------------- -------------
+Chennai - Bengaluru		9		  4		     12 	   85
+Chennai - Madurai		9		  2		      8 	78.18
+
+2 rows selected.
+
+
+       PNR   TRAIN_NO TRAIN_NAME	   JOURNEY_DAT BOARDING 		   DESTINATION		       CLASS_NAME	    SEAT			     FARE PAY_MODE   STATUS
+---------- ---------- -------------------- ----------- --------------------------- --------------------------- -------------------- -------------------------- ---------- ---------- ----------
+4200000015	12639 Brindavan Express    20-SEP-2026 Chennai Central		   KSR Bengaluru City	       Executive Chair Car  E1-4 AISLE			     1101 UPI	     COMPLETED
+4200000189	12027 Chennai Shatabdi	   22-SEP-2026 Chennai Central		   KSR Bengaluru City	       AC Chair Car	    C2-3 AISLE			      561 WALLET     COMPLETED
+4200000309	12635 Vaigai Express	   23-SEP-2026 Chennai Central		   Madurai Junction	       AC Chair Car	    C3-1 WINDOW 		      755 WALLET     COMPLETED
+4200000728	12677 Ernakulam Intercity  28-SEP-2026 KSR Bengaluru City	   Ernakulam Junction	       AC Chair Car	    C2-12 AISLE 		      893 NETBANKING COMPLETED
+4200000132	12607 Lalbagh Express	   05-OCT-2026 Chennai Central		   KSR Bengaluru City	       AC Chair Car	    C2-2 MIDDLE SEAT		      561 UPI	     COMPLETED
+4200000081	12639 Brindavan Express    21-OCT-2026 Chennai Central		   KSR Bengaluru City	       AC Chair Car	    C2-12 AISLE 		      561 CARD	     CONFIRMED
+4200000371	12635 Vaigai Express	   24-OCT-2026 Chennai Central		   Villupuram Junction	       AC Chair Car	    C3-4 WINDOW 		      271 CARD	     CONFIRMED
+
+7 rows selected.
+
+
+  TRAIN_NO TRAIN_NAME		ROUTE_LABEL	       OCCUPANCY_PCT ROUTE_AVG_PCT
+---------- -------------------- ---------------------- ------------- -------------
+     12027 Chennai Shatabdi	Chennai-Bengaluru	       96.88	     85.88
+     12639 Brindavan Express	Chennai-Bengaluru	       96.88	     85.88
+     12637 Pandian Express	Chennai-Madurai 	       96.83	     76.07
+     12635 Vaigai Express	Chennai-Madurai 	       82.41	     76.07
+     12675 Kovai Express	Chennai-Coimbatore	       78.13	     68.78
+
+5 rows selected.
+
+
+PASSENGER_ID FULL_NAME		  CANCELLATIONS TOTAL_BOOKINGS CANCEL_RATIO_PCT TRAINS_CANCELLED
+------------ -------------------- ------------- -------------- ---------------- ------------------------------
+	  23 Nandhini Prasad		      7 	    13		   53.8 22671, 12677, 12027, 12637, 12
+										671, 12027, 12635
+
+	  15 Ajay Reddy 		      4 	    17		   23.5 22671, 22671, 12675, 12027
+	   7 Gayathri Varma		      4 	    12		   33.3 12027, 12635, 12607, 12027
+	  42 Anand Velu 		      3 	    10		     30 12027, 12671, 12677
+	  31 Arjun Rao			      3 	    11		   27.3 12639, 22671, 12675
+
+5 rows selected.
+
+
+ROUTE_NAME	       PASSENGERS
+---------------------- ----------
+Chennai - Bengaluru	      267
+Chennai - Madurai	      266
+
+2 rows selected.
+
+
+STATI STATION_NAME		   MOVEMENTS NETWORK_AVG
+----- --------------------------- ---------- -----------
+MAS   Chennai Central			 557	   110.9
+SBC   KSR Bengaluru City		 271	   110.9
+MDU   Madurai Junction			 226	   110.9
+CBE   Coimbatore Junction		 145	   110.9
+
+4 rows selected.
+
+
+  TRAIN_NO TRAIN_NAME		OCCUPANCY_PCT WAITLISTED
+---------- -------------------- ------------- ----------
+     12027 Chennai Shatabdi		96.88	       5
+     12637 Pandian Express		96.83	       8
+     12639 Brindavan Express		96.88	       7
+
+3 rows selected.
+
+
+PASSENGER_ID FULL_NAME		  HOME_CITY		SPENT
+------------ -------------------- ---------------- ----------
+	  13 Charulatha Sundar	  Bengaluru		 8358
+	   6 Janani Shankar	  Bengaluru		 7515
+	  18 Asha Hegde 	  Bengaluru		 5670
+	 105 Ramesh Chandran	  Bengaluru		 5582
+	  63 Harini Nair	  Bengaluru		 4906
+	  36 Harini Mani	  Bengaluru		 4177
+	  35 Harini Hegde	  Bengaluru		 3918
+	 125 Deepa Raghavan	  Bengaluru		 3643
+	  86 Deepak Shankar	  Bengaluru		 3511
+	  15 Ajay Reddy 	  Chennai		11039
+	   3 Nithya Balaji	  Chennai		 8957
+	  64 Krishna Rajan	  Chennai		 6788
+	   9 Fathima Elango	  Chennai		 6720
+	 118 Anitha Iyer	  Chennai		 6393
+	  30 Swathi Rao 	  Chennai		 5745
+	   4 Manoj Chandran	  Chennai		 5465
+	  37 Abdul Rajan	  Chennai		 5255
+	 110 Ramesh Krishnan	  Chennai		 4731
+	 102 Anand Nair 	  Chennai		 4716
+	  16 Krishna Velu	  Chennai		 4221
+	 144 Hari Thomas	  Chennai		 4210
+	  87 Ajay Krishnan	  Chennai		 3639
+	  40 Pradeep Varma	  Chennai		 3514
+	  41 Prakash Murugan	  Chennai		 3440
+	  98 Preethi Thomas	  Chennai		 3418
+	  88 Indhu Velu 	  Coimbatore		 5333
+	 120 Ramesh Raghavan	  Coimbatore		 4778
+	 145 Anand Srinivasan	  Coimbatore		 3695
+	  24 Saranya Mani	  Coimbatore		 2934
+	  27 Nithya Natarajan	  Coimbatore		 2685
+	  22 Rajesh Sundar	  Coimbatore		 2662
+	 122 Bhavani Pillai	  Coimbatore		 2550
+	  19 Sangeetha Mani	  Dindigul		 7897
+	  17 Revathi Selvam	  Erode 		 5829
+	  89 Ramya Reddy	  Erode 		 2803
+	  91 Meera Raman	  Erode 		 2597
+	  12 Deepa Anand	  Kochi 		 8290
+	  14 Asha Mani		  Kochi 		 6771
+	 109 Ashwin Raghavan	  Kochi 		 5743
+	   8 Kishore Kumar	  Kochi 		 5662
+	 139 Anitha Pillai	  Kochi 		 5175
+	  56 Deepa Sundar	  Kochi 		 4850
+	   1 Balaji Mani	  Kochi 		 4703
+	  42 Anand Velu 	  Madurai		 4908
+	 147 Aishwarya Pandian	  Madurai		 4570
+	  10 Divya Arumugam	  Madurai		 4469
+	 121 Ramya Pandian	  Madurai		 3950
+	  11 Padma Kumar	  Madurai		 3649
+	  25 Sneha Chandran	  Madurai		 3541
+	  39 Bharath Pillai	  Madurai		 3104
+	  50 Ramesh Natarajan	  Madurai		 2912
+	 106 Gayathri Reddy	  Madurai		 2715
+	  76 Usha Chandran	  Madurai		 2675
+	 108 Indhu Rajan	  Palakkad		 4025
+	 104 Sangeetha Subramania Palakkad		 3669
+	     n
+
+	   7 Gayathri Varma	  Palakkad		 3498
+	  80 Nandhini Menon	  Palakkad		 3470
+	  73 Yuvan Raghavan	  Salem 		 3356
+	   5 Priya Pandian	  Tiruchirappalli	 5116
+	  74 Rajesh Anand	  Tiruchirappalli	 5115
+	  59 Ishwarya Hegde	  Tiruchirappalli	 3899
+	  33 Deepak Mohan	  Tiruchirappalli	 3792
+	   2 Ajay Thomas	  Vellore		 8489
+	  31 Arjun Rao		  Vellore		 5300
+
+64 rows selected.
+
+
+PASSENGER_ID FULL_NAME		  HOME_CITY
+------------ -------------------- ----------------
+	   1 Balaji Mani	  Kochi
+	   3 Nithya Balaji	  Chennai
+	   6 Janani Shankar	  Bengaluru
+	   9 Fathima Elango	  Chennai
+	  10 Divya Arumugam	  Madurai
+	  12 Deepa Anand	  Kochi
+	  13 Charulatha Sundar	  Bengaluru
+	  18 Asha Hegde 	  Bengaluru
+	  21 Shalini Raman	  Chennai
+	  32 Sanjay Balaji	  Chennai
+	  43 Nithya Raghavan	  Chennai
+	  61 Indhu Venkatesh	  Chennai
+	  63 Harini Nair	  Bengaluru
+	  64 Krishna Rajan	  Chennai
+	  65 Prakash Natarajan	  Erode
+	  70 Pradeep Balaji	  Chennai
+	  84 Pooja Thomas	  Tiruchirappalli
+	  86 Deepak Shankar	  Bengaluru
+	  93 Yuvan Arumugam	  Bengaluru
+	 100 Deepak Venkatesh	  Dindigul
+	 102 Anand Nair 	  Chennai
+	 108 Indhu Rajan	  Palakkad
+	 110 Ramesh Krishnan	  Chennai
+	 113 Gautham Nair	  Madurai
+	 117 Prakash Elango	  Vellore
+	 118 Anitha Iyer	  Chennai
+	 120 Ramesh Raghavan	  Coimbatore
+	 133 Bhavani Raman	  Bengaluru
+	 135 Asha Velu		  Madurai
+	 139 Anitha Pillai	  Kochi
+	 142 Joseph Kumar	  Vellore
+	 145 Anand Srinivasan	  Coimbatore
+
+32 rows selected.
+
+
+  TRAIN_NO COAC CLA OCCUPANCY_PCT TRAIN_AVG_PCT
+---------- ---- --- ------------- -------------
+     12671 B1	3A	     46.7	   57.1
+     12671 H1	1A	     41.7	   57.1
+     12677 C2	CC	     31.3	     42
+     22671 E1	EC	     33.3	   47.2
+
+4 rows selected.
+
+
+Table created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+1 row created.
+
+
+Table created.
+
+
+Commit complete.
+
+
+Function created.
+
+
+ Train Route		      Occupancy % Cancellation Rate Average Demand Route Avg Occ % Risk Status	      Recommended Action
+------ ---------------------- ----------- ----------------- -------------- --------------- ------------------ ---------------------------------------------
+ 12639 Chennai-Bengaluru	    96.88	       1.96	    104.17	     85.88 CAPACITY REQUIRED  Add 3 seat(s)/journey: attach extra coach
+ 12637 Chennai-Madurai		    96.83		.76	    103.17	     76.07 CAPACITY REQUIRED  Add 3 seat(s)/journey: attach extra coach
+ 12027 Chennai-Bengaluru	    96.88	       12.5	    102.08	     85.88 HIGH DEMAND	      Monitor weekly; extra quota on peak days
+ 12635 Chennai-Madurai		    82.41		4.3	     82.41	     76.07 HIGH DEMAND	      Monitor weekly; extra quota on peak days
+ 12675 Chennai-Coimbatore	    78.13	       3.85	     78.13	     68.78 HIGH DEMAND	      Monitor weekly; extra quota on peak days
+ 12607 Chennai-Bengaluru	    63.89	       2.82	     63.89	     85.88 NORMAL	      No action
+ 12671 Chennai-Coimbatore	    59.42	       3.53	     59.42	     68.78 NORMAL	      No action
+ 22671 Chennai-Madurai		    48.96	       7.84	     48.96	     76.07 NORMAL	      Under-used: review coach composition
+ 12677 Bengaluru-Kochi		    39.84	       5.56	     39.84	     39.84 NORMAL	      Under-used: review coach composition
+
+9 rows selected.
+
+
+Procedure created.
+
+TRAIN CAPACITY RISK SUMMARY - 28-OCT-2026
+CAPACITY REQUIRED   2 train(s): 12637, 12639
+HIGH DEMAND	    3 train(s): 12027, 12635, 12675
+NORMAL		    4 train(s): 12607, 12671, 12677, 22671
+
+PL/SQL procedure successfully completed.
+
+
+1 row updated.
+
+
+  TRAIN_NO CURRENT_STATUS     WHAT_IF_STATUS
+---------- ------------------ ------------------
+     12027 HIGH DEMAND	      CAPACITY REQUIRED
+
+1 row selected.
+
+
+Rollback complete.
+

@@ -20,12 +20,12 @@ SELECT s.schedule_id,
        s.sched_status,
        cap.capacity,
        COUNT(r.pnr)                                                      AS total_bookings,
-       SUM(CASE WHEN r.status IN ('CONFIRMED','COMPLETED') THEN 1 ELSE 0 END) AS seats_occupied,
-       SUM(CASE WHEN r.status = 'WAITLIST'  THEN 1 ELSE 0 END)           AS waitlisted,
-       SUM(CASE WHEN r.status = 'CANCELLED' THEN 1 ELSE 0 END)           AS cancelled,
-       ROUND(100 * SUM(CASE WHEN r.status IN ('CONFIRMED','COMPLETED') THEN 1 ELSE 0 END) / cap.capacity, 2)
+       COUNT(CASE WHEN r.status IN ('CONFIRMED','COMPLETED') THEN 1 END) AS seats_occupied,
+       COUNT(CASE WHEN r.status = 'WAITLIST' THEN 1 END)                 AS waitlisted,
+       COUNT(CASE WHEN r.status = 'CANCELLED' THEN 1 END)                AS cancelled,
+       ROUND(100 * COUNT(CASE WHEN r.status IN ('CONFIRMED','COMPLETED') THEN 1 END) / cap.capacity, 2)
                                                                          AS occupancy_pct,
-       ROUND(100 * SUM(CASE WHEN r.status = 'CANCELLED' THEN 1 ELSE 0 END) / NULLIF(COUNT(r.pnr), 0), 2)
+       ROUND(100 * COUNT(CASE WHEN r.status = 'CANCELLED' THEN 1 END) / NULLIF(COUNT(r.pnr), 0), 2)
                                                                          AS cancellation_rate,
        NVL(SUM(CASE WHEN r.status IN ('CONFIRMED','COMPLETED') THEN r.fare
                     WHEN r.status = 'CANCELLED' THEN r.fare - cn.refund_amount END), 0)
@@ -92,10 +92,10 @@ SELECT * FROM v_train_utilization ORDER BY occupancy_pct DESC;
 -- Q1 TRAIN-WISE RESERVATION STATISTICS  (conditional aggregation / pivot)
 SELECT t.train_no, t.train_name,
        COUNT(*)                                                    AS bookings,
-       SUM(CASE WHEN r.status = 'COMPLETED' THEN 1 ELSE 0 END)     AS completed,
-       SUM(CASE WHEN r.status = 'CONFIRMED' THEN 1 ELSE 0 END)     AS confirmed,
-       SUM(CASE WHEN r.status = 'WAITLIST'  THEN 1 ELSE 0 END)     AS waitlist,
-       SUM(CASE WHEN r.status = 'CANCELLED' THEN 1 ELSE 0 END)     AS cancelled,
+       COUNT(CASE WHEN r.status = 'COMPLETED' THEN 1 END)          AS completed,
+       COUNT(CASE WHEN r.status = 'CONFIRMED' THEN 1 END)          AS confirmed,
+       COUNT(CASE WHEN r.status = 'WAITLIST' THEN 1 END)           AS waitlist,
+       COUNT(CASE WHEN r.status = 'CANCELLED' THEN 1 END)          AS cancelled,
        ROUND(AVG(r.fare), 2)                                       AS avg_fare,
        MIN(r.booking_date)                                         AS first_booking,
        MAX(r.booking_date)                                         AS last_booking
@@ -179,15 +179,14 @@ WHERE  r.status IN ('CONFIRMED','COMPLETED','WAITLIST')
 GROUP  BY ro.route_name;
 
 -- Q6b TOP 5 ORIGIN-DESTINATION PAIRS (peak travel segments)
-SELECT * FROM (
-  SELECT fs.city || ' -> ' || ts.city AS segment, COUNT(*) AS passengers
-  FROM   reservation r
-         JOIN station fs ON fs.station_code = r.from_station
-         JOIN station ts ON ts.station_code = r.to_station
-  WHERE  r.status IN ('CONFIRMED','COMPLETED')
-  GROUP  BY fs.city, ts.city
-  ORDER  BY passengers DESC)
-WHERE ROWNUM <= 5;
+SELECT fs.city || ' -> ' || ts.city AS segment, COUNT(*) AS passengers
+FROM   reservation r
+       JOIN station fs ON fs.station_code = r.from_station
+       JOIN station ts ON ts.station_code = r.to_station
+WHERE  r.status IN ('CONFIRMED','COMPLETED')
+GROUP  BY fs.city, ts.city
+ORDER  BY passengers DESC
+FETCH FIRST 5 ROWS ONLY;
 
 -- Q6c PEAK TRAVEL DAYS OF THE WEEK
 SELECT TO_CHAR(s.journey_date, 'DY') AS travel_day,
@@ -195,7 +194,7 @@ SELECT TO_CHAR(s.journey_date, 'DY') AS travel_day,
        ROUND(100 * RATIO_TO_REPORT(COUNT(*)) OVER (), 1) AS share_pct
 FROM   reservation r JOIN train_schedule s ON s.schedule_id = r.schedule_id
 WHERE  r.status IN ('CONFIRMED','COMPLETED')
-GROUP  BY TO_CHAR(s.journey_date, 'DY'), TO_CHAR(s.journey_date, 'D')
+GROUP  BY TO_CHAR(s.journey_date, 'DY')
 ORDER  BY passengers DESC;
 
 -- Q7 HIGHEST AND LOWEST UTILIZED TRAINS
@@ -220,21 +219,23 @@ GROUP  BY p.passenger_id, p.full_name, p.home_city
 ORDER  BY trips DESC, total_spent DESC;
 
 -- Q9 REVENUE BY TRAIN  (route subtotals and grand total with ROLLUP)
-SELECT NVL(ro.route_name, '** ALL ROUTES **')                     AS route_name,
-       NVL(t.train_name, DECODE(GROUPING(ro.route_name), 0, '-- route total --', ' ')) AS train_name,
-       SUM(pm.amount)                                              AS collected,
-       SUM(NVL(cn.refund_amount, 0)
-           + CASE WHEN pm.pay_status = 'REFUNDED' AND cn.cancel_id IS NULL THEN pm.amount ELSE 0 END) AS refunded,
-       SUM(pm.amount) - SUM(NVL(cn.refund_amount, 0)
-           + CASE WHEN pm.pay_status = 'REFUNDED' AND cn.cancel_id IS NULL THEN pm.amount ELSE 0 END) AS net_revenue
-FROM   payment pm
-       JOIN reservation r        ON r.pnr = pm.pnr
-       JOIN train_schedule s     ON s.schedule_id = r.schedule_id
-       JOIN train t              ON t.train_no = s.train_no
-       JOIN route ro             ON ro.route_id = t.route_id
-       LEFT JOIN cancellation cn ON cn.pnr = r.pnr
-GROUP  BY ROLLUP (ro.route_name, t.train_name)
-ORDER  BY GROUPING(ro.route_name), ro.route_name, GROUPING(t.train_name), net_revenue DESC;
+--    The refund per ticket is worked out once in the inline view, then summed.
+SELECT NVL(route_name, '** ALL ROUTES **')                                       AS route_name,
+       NVL(train_name, DECODE(GROUPING(route_name), 0, '-- route total --', ' ')) AS train_name,
+       SUM(amount)                                                               AS collected,
+       SUM(refunded)                                                             AS refunded,
+       SUM(amount) - SUM(refunded)                                               AS net_revenue
+FROM  (SELECT ro.route_name, t.train_name, pm.amount,
+              NVL(cn.refund_amount, 0)
+              + CASE WHEN pm.pay_status = 'REFUNDED' AND cn.cancel_id IS NULL THEN pm.amount ELSE 0 END AS refunded
+       FROM   payment pm
+              JOIN reservation r        ON r.pnr = pm.pnr
+              JOIN train_schedule s     ON s.schedule_id = r.schedule_id
+              JOIN train t              ON t.train_no = s.train_no
+              JOIN route ro             ON ro.route_id = t.route_id
+              LEFT JOIN cancellation cn ON cn.pnr = r.pnr) x
+GROUP  BY ROLLUP (x.route_name, x.train_name)
+ORDER  BY GROUPING(x.route_name), x.route_name, GROUPING(x.train_name), net_revenue DESC;
 
 -- Q10 ROUTES REQUIRING ADDITIONAL CAPACITY  (HAVING on aggregated journey data)
 SELECT ro.route_name,
@@ -252,7 +253,7 @@ ORDER  BY unserved_passengers DESC;
 --  PART 9 : ADVANCED SQL - JOINS, SUBQUERIES, CORRELATED SUBQUERIES
 -- =====================================================================================
 
--- A1 MULTI-TABLE JOIN (11 relations) : complete travel history of one passenger.
+-- A1 MULTI-TABLE JOIN (10 relations) : complete travel history of one passenger.
 --    Station is joined twice (boarding and destination) using table aliases.
 SELECT r.pnr, t.train_no, t.train_name, s.journey_date,
        fs.station_name AS boarding, ts.station_name AS destination,
@@ -262,7 +263,6 @@ FROM   passenger p
        JOIN reservation r     ON r.passenger_id = p.passenger_id
        JOIN train_schedule s  ON s.schedule_id = r.schedule_id
        JOIN train t           ON t.train_no = s.train_no
-       JOIN route ro          ON ro.route_id = t.route_id
        JOIN station fs        ON fs.station_code = r.from_station
        JOIN station ts        ON ts.station_code = r.to_station
        JOIN coach_class cc    ON cc.class_code = r.class_code

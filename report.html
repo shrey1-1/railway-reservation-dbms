@@ -1,0 +1,277 @@
+<!DOCTYPE html>
+<html><head><meta charset="utf-8"><title>Railway Reservation and Passenger Service Management System</title>
+<style>
+body{font-family:"Times New Roman",serif;font-size:12pt;line-height:1.4;color:#000;max-width:900px;margin:auto}
+h1{font-size:18pt;text-align:center;margin-bottom:4px}
+h2{font-size:14pt;border-bottom:1px solid #444;margin-top:22px}
+h3{font-size:12.5pt;margin-bottom:4px}
+table{border-collapse:collapse;width:100%;margin:6px 0 12px;font-size:10.5pt}
+th,td{border:1px solid #555;padding:3px 6px;vertical-align:top;text-align:left}
+th{background:#dde6f1}
+code,pre{font-family:"Courier New",monospace;font-size:10pt}
+pre{background:#f3f3f3;border:1px solid #bbb;padding:6px;white-space:pre-wrap}
+.c{text-align:center}
+.shot{border:1px dashed #888;padding:6px;color:#555;font-style:italic;margin:6px 0}
+</style></head><body>
+
+<h1>Railway Reservation and Passenger Service Management System</h1>
+<p class="c"><b>Case Study 6</b> &nbsp;|&nbsp; BCSE302P &ndash; Database Systems Lab &nbsp;|&nbsp; Class No. VL20262701033456 &nbsp;|&nbsp; Slot L51+L52</p>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">Register No.</th><th bgcolor="#dde6f1">Name</th><th bgcolor="#dde6f1">Contribution</th></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td>&nbsp;</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+</table>
+<p>DBMS: Oracle Database (tested on Oracle 23ai Free through SQL*Plus). Script: <code>railway_case_study6.sql</code> (re-runnable; it drops and recreates every object it owns).</p>
+
+<h2>1. Introduction</h2>
+<p>A national railway organisation keeps reservation records in manual registers and spreadsheets. That causes duplicate seat allocation, inconsistent passenger details, slow cancellation processing and no reliable view of how full each train runs. This project replaces those records with a normalised relational database. It manages stations, routes, trains, coaches, seats, journeys, passengers, reservations, payments and cancellations. On top of the data it provides analytical queries, views and a Train Capacity Risk Identification module that tells management which trains need additional capacity.</p>
+
+<h2>2. Requirement Analysis</h2>
+<h3>2.1 Functional requirements</h3>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">ID</th><th bgcolor="#dde6f1">Requirement</th></tr>
+<tr><td>FR1</td><td>Maintain stations, routes and the ordered list of stops (with distance) on each route.</td></tr>
+<tr><td>FR2</td><td>Maintain trains, the route each train runs on, its coach composition and every seat/berth in each coach.</td></tr>
+<tr><td>FR3</td><td>Create a journey (schedule) for each date a train runs, with its status.</td></tr>
+<tr><td>FR4</td><td>Register passengers with validated contact details and concession category.</td></tr>
+<tr><td>FR5</td><td>Book a ticket: allocate a free seat of the requested class automatically, otherwise place the passenger on the waitlist.</td></tr>
+<tr><td>FR6</td><td>Compute the fare from the travelled distance and class, and record the payment.</td></tr>
+<tr><td>FR7</td><td>Cancel a ticket: compute the refund from the time left before departure, release the seat, and confirm the first waitlisted passenger.</td></tr>
+<tr><td>FR8</td><td>Modify a reservation (e.g. change boarding point) with automatic fare recalculation.</td></tr>
+<tr><td>FR9</td><td>Produce reports: train-wise reservations, station traffic, route/coach utilisation, cancellations, revenue, passenger frequency.</td></tr>
+<tr><td>FR10</td><td>Classify trains as CAPACITY REQUIRED / HIGH DEMAND / NORMAL to support capacity planning.</td></tr>
+</table>
+
+<h3>2.2 Business rules</h3>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">ID</th><th bgcolor="#dde6f1">Rule</th><th bgcolor="#dde6f1">Enforced by</th></tr>
+<tr><td>BR1</td><td>Station codes are unique upper-case codes.</td><td>PK + CHECK</td></tr>
+<tr><td>BR2</td><td>A route has different origin and destination; a station appears at most once on a route.</td><td>CHECK, UNIQUE(route_id, station_code)</td></tr>
+<tr><td>BR3</td><td>A train runs on exactly one route; a route can have many trains.</td><td>FK train.route_id NOT NULL</td></tr>
+<tr><td>BR4</td><td>Coach labels are unique within a train; every coach belongs to one class.</td><td>UNIQUE(train_no, coach_label), FK</td></tr>
+<tr><td>BR5</td><td>A train runs at most once per date.</td><td>UNIQUE(train_no, journey_date)</td></tr>
+<tr><td>BR6</td><td>Phone is a 10-digit Indian mobile number; phone and email are unique.</td><td>CHECK (REGEXP_LIKE), UNIQUE</td></tr>
+<tr><td>BR7</td><td>A seat can be sold only once per journey.</td><td>Function-based UNIQUE index</td></tr>
+<tr><td>BR8</td><td>A passenger can hold only one active ticket per journey.</td><td>Function-based UNIQUE index</td></tr>
+<tr><td>BR9</td><td>CONFIRMED/COMPLETED tickets must have a seat; WAITLIST/CANCELLED tickets must not.</td><td>CHECK ck_res_seat_status</td></tr>
+<tr><td>BR10</td><td>The boarding station must come before the destination on the train's route.</td><td>Trigger</td></tr>
+<tr><td>BR11</td><td>The allotted seat must belong to a coach of the same train and the booked class.</td><td>Trigger</td></tr>
+<tr><td>BR12</td><td>A ticket cannot be booked after the journey date.</td><td>Trigger</td></tr>
+<tr><td>BR13</td><td>Fare = max(distance, 50 km) &times; class fare/km + reservation fee.</td><td>Trigger</td></tr>
+<tr><td>BR14</td><td>Every reservation has exactly one payment; it has at most one cancellation.</td><td>UNIQUE FK pnr</td></tr>
+<tr><td>BR15</td><td>Refund: waitlist 100%, &ge;48 h 90%, &ge;24 h 75%, &ge;4 h 50%, otherwise nil.</td><td>Procedure cancel_ticket</td></tr>
+<tr><td>BR16</td><td>A passenger with booking history cannot be deleted.</td><td>FK (no cascade)</td></tr>
+</table>
+
+<h3>2.3 Assumptions</h3>
+<ul>
+<li>One reservation (PNR) is one passenger on one seat. A group booking is several PNRs.</li>
+<li>A seat is held for the whole journey of the train; segment-wise seat reuse is out of scope.</li>
+<li>Seats per coach are scaled down (CC 12, SL 12, 3A 10, 2A 8, EC 8, 1A 4) so that occupancy patterns are visible with a manageable data volume.</li>
+<li>A waitlisted ticket that is not confirmed by departure stays WAITLIST and is fully refunded. It is counted as unserved demand.</li>
+</ul>
+
+<h2>3. Database Design</h2>
+<h3>3.1 Entities and attributes</h3>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">Entity</th><th bgcolor="#dde6f1">Attributes (PK underlined)</th><th bgcolor="#dde6f1">Description</th></tr>
+<tr><td>STATION</td><td><u>station_code</u>, station_name, city, state, rail_zone, platforms</td><td>Railway station</td></tr>
+<tr><td>ROUTE</td><td><u>route_id</u>, route_name, origin_code, dest_code, distance_km</td><td>Corridor between two stations</td></tr>
+<tr><td>ROUTE_STOP</td><td><u>route_id, stop_seq</u>, station_code, km_from_origin</td><td>Ordered stops of a route (associative entity)</td></tr>
+<tr><td>TRAIN</td><td><u>train_no</u>, train_name, train_type, route_id, dep_time, run_days, is_active</td><td>Train service</td></tr>
+<tr><td>COACH_CLASS</td><td><u>class_code</u>, class_name, seats_per_coach, fare_per_km, reservation_fee</td><td>Travel class and fare rule</td></tr>
+<tr><td>COACH</td><td><u>coach_id</u>, train_no, coach_label, class_code</td><td>Coach attached to a train</td></tr>
+<tr><td>SEAT</td><td><u>seat_id</u>, coach_id, seat_no, berth_type</td><td>Seat or berth in a coach</td></tr>
+<tr><td>TRAIN_SCHEDULE</td><td><u>schedule_id</u>, train_no, journey_date, sched_status</td><td>One run of a train on a date</td></tr>
+<tr><td>PASSENGER</td><td><u>passenger_id</u>, full_name, gender, dob, phone, email, home_city, registered_on, concession_type</td><td>Registered traveller</td></tr>
+<tr><td>RESERVATION</td><td><u>pnr</u>, passenger_id, schedule_id, class_code, seat_id, from_station, to_station, booking_date, fare, status</td><td>Ticket; <i>status</i> is the ticket status</td></tr>
+<tr><td>PAYMENT</td><td><u>payment_id</u>, pnr, amount, pay_mode, paid_on, pay_status</td><td>Payment for a ticket</td></tr>
+<tr><td>CANCELLATION</td><td><u>cancel_id</u>, pnr, cancelled_on, refund_amount, reason</td><td>Cancellation and refund</td></tr>
+</table>
+
+<h3>3.2 Relationships and cardinalities</h3>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">Relationship</th><th bgcolor="#dde6f1">Cardinality</th><th bgcolor="#dde6f1">Participation / note</th></tr>
+<tr><td>ROUTE has ROUTE_STOP</td><td>1 : N</td><td>Total on ROUTE_STOP side</td></tr>
+<tr><td>STATION is a ROUTE_STOP</td><td>1 : N</td><td>Resolves M:N between ROUTE and STATION</td></tr>
+<tr><td>STATION is origin / destination of ROUTE</td><td>1 : N (twice)</td><td>Two separate FKs</td></tr>
+<tr><td>ROUTE is run by TRAIN</td><td>1 : N</td><td>Every train must have a route</td></tr>
+<tr><td>TRAIN has COACH</td><td>1 : N</td><td>COACH depends on TRAIN (cascade delete)</td></tr>
+<tr><td>COACH_CLASS classifies COACH</td><td>1 : N</td><td></td></tr>
+<tr><td>COACH contains SEAT</td><td>1 : N</td><td>SEAT depends on COACH</td></tr>
+<tr><td>TRAIN runs as TRAIN_SCHEDULE</td><td>1 : N</td><td></td></tr>
+<tr><td>TRAIN_SCHEDULE has RESERVATION</td><td>1 : N</td><td></td></tr>
+<tr><td>PASSENGER books RESERVATION</td><td>1 : N</td><td></td></tr>
+<tr><td>SEAT allotted to RESERVATION</td><td>1 : 0..N</td><td>Optional on RESERVATION (waitlist); at most one active per journey</td></tr>
+<tr><td>COACH_CLASS booked in RESERVATION</td><td>1 : N</td><td></td></tr>
+<tr><td>STATION boards / alights RESERVATION</td><td>1 : N (twice)</td><td>from_station, to_station</td></tr>
+<tr><td>RESERVATION paid by PAYMENT</td><td>1 : 1</td><td>UNIQUE pnr in PAYMENT</td></tr>
+<tr><td>RESERVATION cancelled by CANCELLATION</td><td>1 : 0..1</td><td>UNIQUE pnr in CANCELLATION</td></tr>
+</table>
+
+<h3>3.3 ER diagram</h3>
+<p class="c"><img src="er_diagram.png" alt="ER diagram" width="640" height="433"></p>
+
+<h3>3.4 Relational schema</h3>
+<pre>
+STATION        (<u>station_code</u>, station_name, city, state, rail_zone, platforms)
+ROUTE          (<u>route_id</u>, route_name, origin_code&rarr;STATION, dest_code&rarr;STATION, distance_km)
+ROUTE_STOP     (<u>route_id&rarr;ROUTE, stop_seq</u>, station_code&rarr;STATION, km_from_origin)
+TRAIN          (<u>train_no</u>, train_name, train_type, route_id&rarr;ROUTE, dep_time, run_days, is_active)
+COACH_CLASS    (<u>class_code</u>, class_name, seats_per_coach, fare_per_km, reservation_fee)
+COACH          (<u>coach_id</u>, train_no&rarr;TRAIN, coach_label, class_code&rarr;COACH_CLASS)
+SEAT           (<u>seat_id</u>, coach_id&rarr;COACH, seat_no, berth_type)
+TRAIN_SCHEDULE (<u>schedule_id</u>, train_no&rarr;TRAIN, journey_date, sched_status)
+PASSENGER      (<u>passenger_id</u>, full_name, gender, dob, phone, email, home_city, registered_on, concession_type)
+RESERVATION    (<u>pnr</u>, passenger_id&rarr;PASSENGER, schedule_id&rarr;TRAIN_SCHEDULE, class_code&rarr;COACH_CLASS,
+                seat_id&rarr;SEAT, from_station&rarr;STATION, to_station&rarr;STATION, booking_date, fare, status)
+PAYMENT        (<u>payment_id</u>, pnr&rarr;RESERVATION [unique], amount, pay_mode, paid_on, pay_status)
+CANCELLATION   (<u>cancel_id</u>, pnr&rarr;RESERVATION [unique], cancelled_on, refund_amount, reason)
+Alternate keys: COACH(train_no, coach_label), SEAT(coach_id, seat_no), TRAIN_SCHEDULE(train_no, journey_date),
+                ROUTE_STOP(route_id, station_code), PASSENGER(phone), PASSENGER(email), ROUTE(route_name)
+</pre>
+
+<h3>3.5 Normalisation</h3>
+<ul>
+<li><b>1NF</b>: every attribute is atomic. Stops of a route are stored as rows in ROUTE_STOP, not as a list in ROUTE. Seats are rows in SEAT, not a count.</li>
+<li><b>2NF</b>: the only composite key is ROUTE_STOP(route_id, stop_seq). Both station_code and km_from_origin depend on the whole key (a stop position), not on route_id alone.</li>
+<li><b>3NF / BCNF</b>: there are no transitive dependencies. The fare rate depends on class, so it lives in COACH_CLASS, not in COACH or RESERVATION. Route distance and station names are not repeated in TRAIN or RESERVATION. Refund details live in CANCELLATION, not in RESERVATION, which avoids NULL-heavy columns. Every determinant is a candidate key.</li>
+<li><b>Controlled redundancy</b>: <code>reservation.fare</code> is stored even though it can be derived. Fare rules change over time, and a ticket must keep the price charged at booking.</li>
+</ul>
+
+<h3>3.6 Key design decisions</h3>
+<ul>
+<li><b>TRAIN_SCHEDULE separates a train from its journeys.</b> Occupancy, waitlist and cancellations are per journey, and the same seat is resold on every date.</li>
+<li><b>Seat uniqueness uses a function-based unique index.</b> The index is <code>(CASE WHEN seat_id IS NOT NULL THEN schedule_id END, seat_id)</code>. A plain UNIQUE(schedule_id, seat_id) would reject two waitlisted tickets, because Oracle treats (101, NULL) twice as a duplicate.</li>
+<li><b>Cross-table rules (BR10&ndash;BR13) are in one BEFORE trigger.</b> CHECK constraints cannot read other tables.</li>
+<li><b>Risk thresholds are stored in a table (RISK_THRESHOLD)</b>, not hard-coded, so management can tune the rules without changing code.</li>
+</ul>
+
+<h2>4. Implementation (DDL, DML, Constraints)</h2>
+<h3>4.1 Constraints used</h3>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">Type</th><th bgcolor="#dde6f1">Count</th><th bgcolor="#dde6f1">Examples</th></tr>
+<tr><td>PRIMARY KEY</td><td>12 (+2 in risk module)</td><td>pk_station, pk_route_stop (composite), pk_reservation</td></tr>
+<tr><td>FOREIGN KEY</td><td>17 (+1 in risk module)</td><td>fk_res_seat, fk_res_from / fk_res_to (two FKs to STATION), fk_coach_train ON DELETE CASCADE</td></tr>
+<tr><td>UNIQUE</td><td>10 + 2 function-based indexes</td><td>uq_sched(train_no, journey_date), ux_res_seat_journey</td></tr>
+<tr><td>CHECK</td><td>30</td><td>REGEXP_LIKE on phone, email, dep_time, run_days; domain lists for status, class, berth; ranges for platforms, fare</td></tr>
+<tr><td>NOT NULL / DEFAULT</td><td>&mdash;</td><td>status DEFAULT 'CONFIRMED', booking_date DEFAULT TRUNC(SYSDATE)</td></tr>
+<tr><td>Trigger</td><td>1</td><td>trg_reservation_validate (BR10&ndash;BR13)</td></tr>
+</table>
+
+<h3>4.2 Sample data loaded</h3>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">Table</th><th bgcolor="#dde6f1">Rows</th><th bgcolor="#dde6f1">Table</th><th bgcolor="#dde6f1">Rows</th></tr>
+<tr><td>STATION</td><td>14</td><td>SEAT (INSERT &hellip; SELECT with CONNECT BY)</td><td>320</td></tr>
+<tr><td>ROUTE / ROUTE_STOP</td><td>4 / 21</td><td>TRAIN_SCHEDULE</td><td>27 (+1 demo)</td></tr>
+<tr><td>TRAIN</td><td>9</td><td>PASSENGER</td><td>150</td></tr>
+<tr><td>COACH_CLASS</td><td>6</td><td>RESERVATION</td><td>768 (+9 demo)</td></tr>
+<tr><td>COACH</td><td>30</td><td>PAYMENT / CANCELLATION</td><td>768 / 35 (INSERT &hellip; SELECT)</td></tr>
+</table>
+<p>Each train has two completed journeys (Sep&ndash;Oct 2026) and one upcoming journey. The trains were given deliberately different demand profiles: sold-out with waitlist, sold-out with frequent cancellations, steady, and under-used. A passenger never travels on two journeys on the same day.</p>
+<div class="shot">[Screenshot: table creation output and the row-count query in Part 2]</div>
+
+<h3>4.3 Structure modification (ALTER)</h3>
+<pre>ALTER TABLE passenger ADD (concession_type VARCHAR2(10) DEFAULT 'NONE' NOT NULL CONSTRAINT ck_pass_concession CHECK (...));
+ALTER TABLE station   MODIFY (station_name VARCHAR2(80));
+ALTER TABLE passenger RENAME COLUMN city TO home_city;
+ALTER TABLE train     ADD CONSTRAINT uq_train_name UNIQUE (train_name);</pre>
+
+<h3>4.4 Modification and deletion</h3>
+<ul>
+<li>Concession category is derived from age with UPDATE + MONTHS_BETWEEN.</li>
+<li>Timetable change: <code>UPDATE train SET dep_time='07:40'</code>.</li>
+<li><b>Reservation modification:</b> PNR 4200000071 changed its boarding point from MAS to KPD. Setting fare to NULL makes the trigger recompute it: &#8377;561 &rarr; &#8377;374. The payment is updated to match.</li>
+<li>DELETE of a passenger with no bookings succeeds. DELETE of a passenger with bookings is rejected (BR16).</li>
+</ul>
+
+<h3>4.5 Integrity enforcement tests (each is expected to fail)</h3>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">Test</th><th bgcolor="#dde6f1">Error raised</th></tr>
+<tr><td>Insert passenger with phone '12345'</td><td>ORA-02290 check constraint CK_PASS_PHONE</td></tr>
+<tr><td>Sell an already-sold seat on journey 101</td><td>ORA-00001 unique constraint UX_RES_SEAT_JOURNEY</td></tr>
+<tr><td>Allot a seat of train 12677 on a 12639 journey</td><td>ORA-20003 seat does not belong to train (trigger)</td></tr>
+<tr><td>Book SBC &rarr; MAS on a MAS &rarr; SBC train</td><td>ORA-20002 boarding must come before destination (trigger)</td></tr>
+<tr><td>CONFIRMED ticket without a seat</td><td>ORA-02290 CK_RES_SEAT_STATUS</td></tr>
+<tr><td>Delete passenger 1 (has tickets)</td><td>ORA-02292 child record found</td></tr>
+<tr><td>Route stop with unknown station 'XYZ'</td><td>ORA-02291 parent key not found</td></tr>
+</table>
+<div class="shot">[Screenshot: Part 5 output showing the seven rejected statements]</div>
+
+<h3>4.6 Seat allocation and cancellation processing</h3>
+<p><b>book_ticket</b> picks the lowest free seat of the requested class on that journey (NOT EXISTS subquery) or issues a WAITLIST ticket, and records the payment. <b>cancel_ticket</b> applies BR15, releases the seat, marks the payment refunded, and promotes the earliest waitlisted ticket of the same journey and class onto the released seat.</p>
+<p>Demo: nine passengers booked the 8-seat EC coach of 12677 (journey 7 days ahead). PNRs 4200001001&ndash;1008 were CONFIRMED and 4200001009 was WAITLIST. Cancelling 4200001001 refunded &#8377;1,588.50 (90% of &#8377;1,765) and automatically confirmed 4200001009 on the released seat E1-1.</p>
+<div class="shot">[Screenshot: Part 6 DBMS_OUTPUT and the journey-130 ticket listing]</div>
+
+<h2>5. SQL-Based Data Processing and Analysis</h2>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">#</th><th bgcolor="#dde6f1">Scenario</th><th bgcolor="#dde6f1">Techniques</th><th bgcolor="#dde6f1">Key result</th></tr>
+<tr><td>Q1</td><td>Train-wise reservation statistics</td><td>3-table join, conditional aggregation (pivot by status), AVG/MIN/MAX</td><td>Pandian Express has the most bookings (131), including 8 waitlisted</td></tr>
+<tr><td>Q2</td><td>Station-wise passenger volume</td><td>Two grouped inline views + LEFT JOIN, NVL</td><td>MAS handles 557 movements; TVC has none (shown thanks to LEFT JOIN)</td></tr>
+<tr><td>Q3</td><td>Route utilisation</td><td>View + GROUP BY, ratio calculation</td><td>Chennai&ndash;Bengaluru 85.0%, Bengaluru&ndash;Ernakulam 39.8%</td></tr>
+<tr><td>Q4</td><td>Coach occupancy</td><td>5-table join, LEFT JOIN with filter in ON clause</td><td>Nilgiri 1A coach only 41.7% occupied</td></tr>
+<tr><td>Q5</td><td>Cancellation statistics</td><td>LEFT JOIN CANCELLATION, date arithmetic, RATIO_TO_REPORT</td><td>Shatabdi cancellation rate 12.5%; "Change of plans" is the top reason (27.8%)</td></tr>
+<tr><td>Q6</td><td>Peak travel routes / segments / days</td><td>DENSE_RANK, top-N with ROWNUM, TO_CHAR(date,'DY')</td><td>Chennai&rarr;Madurai is the busiest segment (201); Sunday carries 21.9% of passengers</td></tr>
+<tr><td>Q7</td><td>Highest and lowest utilised trains</td><td>RANK() ascending and descending in one pass</td><td>Highest: 12639 and 12027 (96.88%); lowest: 12677 (39.84%)</td></tr>
+<tr><td>Q8</td><td>Passenger travel frequency</td><td>Join view, SUM distance/spend, CASE banding</td><td>FREQUENT (&ge;6 trips), REGULAR (3&ndash;5), OCCASIONAL</td></tr>
+<tr><td>Q9</td><td>Revenue by train</td><td>GROUP BY ROLLUP, GROUPING(), refunds netted off</td><td>Route subtotals plus grand total of net revenue</td></tr>
+<tr><td>Q10</td><td>Routes requiring additional capacity</td><td>HAVING on aggregated journey view</td><td>Chennai&ndash;Bengaluru (12 unserved, 4 sold-out journeys) and Chennai&ndash;Madurai (8 unserved)</td></tr>
+</table>
+<div class="shot">[Screenshots: output of Q1&ndash;Q10]</div>
+
+<h2>6. Advanced SQL: Views, Joins and Subqueries</h2>
+<h3>6.1 Views</h3>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">View</th><th bgcolor="#dde6f1">Grain</th><th bgcolor="#dde6f1">Purpose</th></tr>
+<tr><td>V_RESERVATION_PERFORMANCE</td><td>one row per journey</td><td>Capacity, bookings, occupied seats, waitlist, cancellations, occupancy %, cancellation rate, revenue. Every metric is defined once and reused everywhere.</td></tr>
+<tr><td>V_TRAIN_UTILIZATION</td><td>one row per train</td><td>Aggregates the first view over all journeys and adds demand % and route label. It is the input to the risk module.</td></tr>
+<tr><td>V_TICKET_DETAILS</td><td>one row per ticket</td><td>Hides the 7-table join (incl. route_stop twice for distance) for enquiry screens and Q8.</td></tr>
+</table>
+<p><b>Metric definitions:</b> occupancy % = occupied seats &divide; capacity &times; 100; cancellation rate = cancelled &divide; all bookings &times; 100; demand % = (occupied + waitlisted) &divide; capacity &times; 100.</p>
+
+<h3>6.2 Advanced queries and justification</h3>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">#</th><th bgcolor="#dde6f1">Question</th><th bgcolor="#dde6f1">Technique</th><th bgcolor="#dde6f1">Why this technique</th></tr>
+<tr><td>A1</td><td>Complete travel history of a passenger</td><td>11-relation join; STATION joined twice under aliases; LEFT JOIN for waitlisted tickets without seats</td><td>Ticket data is spread across normalised tables; outer joins keep tickets that have no seat</td></tr>
+<tr><td>A2</td><td>Trains with occupancy above their route average</td><td><b>Correlated subquery</b> (inner AVG filtered by outer route_id)</td><td>The benchmark is different for each route, so it must be recomputed per outer row</td></tr>
+<tr><td>A3</td><td>Passengers with repeated cancellations</td><td>GROUP BY/HAVING &ge;2, correlated scalar subquery for total bookings, LISTAGG</td><td>Shows both the count and the cancellation ratio. Passenger 23 cancelled 7 of 13 bookings (53.8%)</td></tr>
+<tr><td>A4</td><td>Routes with above-average passenger demand</td><td><b>Nested subquery</b> (AVG of a grouped inline view) inside HAVING</td><td>The average of route totals needs two levels of aggregation</td></tr>
+<tr><td>A5</td><td>Stations with higher-than-average traffic</td><td>WITH clause + UNION ALL + subquery</td><td>Each station must count both boardings and alightings; the CTE is reused for the average</td></tr>
+<tr><td>A6</td><td>Trains requiring capacity enhancement</td><td>Correlated NOT EXISTS (no journey below 90%) + EXISTS (waitlist present)</td><td>"Every journey" is a universal condition, which is expressed naturally as NOT EXISTS a counter-example. Result: 12027, 12637, 12639</td></tr>
+<tr><td>A7</td><td>Passengers spending above the average of their own city</td><td>Correlated subquery in HAVING</td><td>Peer-group comparison: the benchmark changes with the passenger's city</td></tr>
+<tr><td>A8</td><td>Loyal passengers (&ge;3 trips on near-full trains, never cancelled)</td><td>IN with nested IN + GROUP BY/HAVING, NOT IN</td><td>Set membership logic for loyalty and quota-priority programmes</td></tr>
+<tr><td>A9</td><td>Coaches 10+ points below their own train's coach average</td><td>WITH clause referenced by a correlated subquery</td><td>Finds wrong coach composition, e.g. Nilgiri 1A at 41.7% against a train average of 57.1%</td></tr>
+</table>
+<div class="shot">[Screenshots: view definitions and output of A1&ndash;A9]</div>
+
+<h2>7. Train Capacity Risk Identification Module (BTL-6)</h2>
+<h3>7.1 Criteria and justification</h3>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">Status</th><th bgcolor="#dde6f1">Rule (thresholds in RISK_THRESHOLD)</th><th bgcolor="#dde6f1">Justification</th></tr>
+<tr><td><b>CAPACITY REQUIRED</b></td><td>Occupancy &ge; 90% <b>AND</b> Demand &ge; 100% <b>AND</b> Cancellation rate &le; 10%</td><td>The train is effectively full, and passengers are being turned away (demand above 100% means a waitlist exists). The low cancellation rate means the waitlist will not clear by itself. Adding a coach is the only way to serve this demand.</td></tr>
+<tr><td><b>HIGH DEMAND</b></td><td>Not the above, and Occupancy &ge; 75% <b>OR</b> Demand &ge; 90%</td><td>Strong demand that is still being served, or a full train whose many cancellations release enough seats for the waitlist. Monitor it rather than invest in coaches.</td></tr>
+<tr><td><b>NORMAL</b></td><td>Otherwise</td><td>Adequate capacity. Below 50% occupancy the report also suggests reviewing coach composition (under-use).</td></tr>
+</table>
+<p>The module uses three tables (RISK_THRESHOLD, CAPACITY_RISK_LOG, plus the views), a function <code>fn_capacity_risk</code> that reads the thresholds, a report query with an analytic window (<code>AVG() OVER (PARTITION BY route_id)</code>) for the route benchmark, and a procedure <code>prc_capacity_risk_report</code> that stores each day's classification for trend tracking.</p>
+
+<h3>7.2 Generated report</h3>
+<table border="1" cellspacing="0" cellpadding="4" width="100%">
+<tr><th bgcolor="#dde6f1">Train</th><th bgcolor="#dde6f1">Route</th><th bgcolor="#dde6f1">Occupancy %</th><th bgcolor="#dde6f1">Cancellation Rate</th><th bgcolor="#dde6f1">Average Demand</th><th bgcolor="#dde6f1">Route Avg Occ %</th><th bgcolor="#dde6f1">Risk Status</th><th bgcolor="#dde6f1">Recommended Action</th></tr>
+<tr><td>12639</td><td>Chennai&ndash;Bengaluru</td><td>96.88</td><td>1.96</td><td>104.17</td><td>85.88</td><td><b>CAPACITY REQUIRED</b></td><td>Add 3 seat(s)/journey: attach extra coach</td></tr>
+<tr><td>12637</td><td>Chennai&ndash;Madurai</td><td>96.83</td><td>0.76</td><td>103.17</td><td>76.07</td><td><b>CAPACITY REQUIRED</b></td><td>Add 3 seat(s)/journey: attach extra coach</td></tr>
+<tr><td>12027</td><td>Chennai&ndash;Bengaluru</td><td>96.88</td><td>12.50</td><td>102.08</td><td>85.88</td><td>HIGH DEMAND</td><td>Monitor weekly; extra quota on peak days</td></tr>
+<tr><td>12635</td><td>Chennai&ndash;Madurai</td><td>82.41</td><td>4.30</td><td>82.41</td><td>76.07</td><td>HIGH DEMAND</td><td>Monitor weekly; extra quota on peak days</td></tr>
+<tr><td>12675</td><td>Chennai&ndash;Coimbatore</td><td>78.13</td><td>3.85</td><td>78.13</td><td>68.78</td><td>HIGH DEMAND</td><td>Monitor weekly; extra quota on peak days</td></tr>
+<tr><td>12607</td><td>Chennai&ndash;Bengaluru</td><td>63.89</td><td>2.82</td><td>63.89</td><td>85.88</td><td>NORMAL</td><td>No action</td></tr>
+<tr><td>12671</td><td>Chennai&ndash;Coimbatore</td><td>59.42</td><td>3.53</td><td>59.42</td><td>68.78</td><td>NORMAL</td><td>No action</td></tr>
+<tr><td>22671</td><td>Chennai&ndash;Madurai</td><td>48.96</td><td>7.84</td><td>48.96</td><td>76.07</td><td>NORMAL</td><td>Under-used: review coach composition</td></tr>
+<tr><td>12677</td><td>Bengaluru&ndash;Kochi</td><td>39.84</td><td>5.56</td><td>39.84</td><td>39.84</td><td>NORMAL</td><td>Under-used: review coach composition</td></tr>
+</table>
+<p><b>Interpretation:</b> 12639 and 12027 have identical occupancy and both have a waitlist. 12027 is classified HIGH DEMAND, not CAPACITY REQUIRED, because 12.5% of its bookings are cancelled, and that releases seats to waitlisted passengers. The report therefore separates real capacity shortage from apparent shortage.</p>
+<p><b>What-if analysis:</b> temporarily raising the tolerated cancellation rate to 15% (UPDATE RISK_THRESHOLD, then ROLLBACK) moves 12027 to CAPACITY REQUIRED. This shows the decision is driven by data and can be tuned without code changes.</p>
+<div class="shot">[Screenshot: Part 10 report, procedure summary and what-if output]</div>
+
+<h2>8. Conclusion</h2>
+<p>The database replaces manual reservation records with a 12-table BCNF design. Seat allocation is guaranteed correct at the database level by unique indexes, CHECK constraints and a validation trigger, so it does not depend on application code. Booking, cancellation, refund and waitlist promotion are automated. Ten analytical queries, nine advanced queries and three views give management a consistent view of utilisation, and the capacity risk module identifies the two trains (12639 Brindavan Express and 12637 Pandian Express) that need additional coaches.</p>
+</body></html>

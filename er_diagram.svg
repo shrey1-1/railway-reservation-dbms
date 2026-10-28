@@ -1,0 +1,139 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1420" height="960" viewBox="0 0 1420 960" font-family="DejaVu Sans, Arial, sans-serif">
+<rect width="1420" height="960" fill="#ffffff"/>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="230,100 300,100"/>
+<text x="246" y="94" font-size="11" fill="#1a4d8f" font-weight="bold">1 : N</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="510,100 580,100"/>
+<text x="526" y="94" font-size="11" fill="#1a4d8f" font-weight="bold">N : 1</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="125,40 125,18 685,18 685,40"/>
+<text x="300" y="13" font-size="11" fill="#1a4d8f" font-weight="bold">1 : N   origin / destination</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="685,161 685,270"/>
+<text x="692" y="220" font-size="11" fill="#1a4d8f" font-weight="bold">1 : N  runs on</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="965,161 965,270"/>
+<text x="972" y="220" font-size="11" fill="#1a4d8f" font-weight="bold">1 : N  of class</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="790,320 860,320"/>
+<text x="806" y="314" font-size="11" fill="#1a4d8f" font-weight="bold">1 : N</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="1070,320 1140,320"/>
+<text x="1086" y="314" font-size="11" fill="#1a4d8f" font-weight="bold">1 : N</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="685,425 685,500"/>
+<text x="692" y="466" font-size="11" fill="#1a4d8f" font-weight="bold">1 : N  runs as</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="790,550 860,550"/>
+<text x="806" y="544" font-size="11" fill="#1a4d8f" font-weight="bold">1 : N</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="1245,374 1245,600 1070,600"/>
+<text x="1252" y="490" font-size="11" fill="#1a4d8f" font-weight="bold">1 : 0..N  allotted</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="1070,100 1390,100 1390,640 1070,640"/>
+<text x="1290" y="94" font-size="11" fill="#1a4d8f" font-weight="bold">1 : N  booked in</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="125,178 125,680 860,680"/>
+<text x="140" y="674" font-size="11" fill="#1a4d8f" font-weight="bold">1 : N  boards at / alights at (2 FKs)</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="510,790 860,700"/>
+<text x="640" y="770" font-size="11" fill="#1a4d8f" font-weight="bold">1 : N  books</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="965,706 965,760"/>
+<text x="972" y="738" font-size="11" fill="#1a4d8f" font-weight="bold">1 : 1</text>
+<polyline fill="none" stroke="#444" stroke-width="1.6" points="1070,690 1245,690 1245,760"/>
+<text x="1150" y="684" font-size="11" fill="#1a4d8f" font-weight="bold">1 : 0..1</text>
+<rect x="20" y="40" width="210" height="138" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="20" y="40" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="125.0" y="58" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">STATION</text>
+<text x="30" y="84" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">station_code PK</text>
+<text x="30" y="101" font-size="12" fill="#222">station_name</text>
+<text x="30" y="118" font-size="12" fill="#222">city</text>
+<text x="30" y="135" font-size="12" fill="#222">state</text>
+<text x="30" y="152" font-size="12" fill="#222">rail_zone</text>
+<text x="30" y="169" font-size="12" fill="#222">platforms</text>
+<rect x="300" y="40" width="210" height="104" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="300" y="40" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="405.0" y="58" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">ROUTE_STOP</text>
+<text x="310" y="84" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">route_id PK,FK</text>
+<text x="310" y="101" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">stop_seq PK</text>
+<text x="310" y="118" font-size="12" fill="#a33">station_code FK</text>
+<text x="310" y="135" font-size="12" fill="#222">km_from_origin</text>
+<rect x="580" y="40" width="210" height="121" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="580" y="40" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="685.0" y="58" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">ROUTE</text>
+<text x="590" y="84" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">route_id PK</text>
+<text x="590" y="101" font-size="12" fill="#222">route_name</text>
+<text x="590" y="118" font-size="12" fill="#a33">origin_code FK</text>
+<text x="590" y="135" font-size="12" fill="#a33">dest_code FK</text>
+<text x="590" y="152" font-size="12" fill="#222">distance_km</text>
+<rect x="860" y="40" width="210" height="121" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="860" y="40" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="965.0" y="58" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">COACH_CLASS</text>
+<text x="870" y="84" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">class_code PK</text>
+<text x="870" y="101" font-size="12" fill="#222">class_name</text>
+<text x="870" y="118" font-size="12" fill="#222">seats_per_coach</text>
+<text x="870" y="135" font-size="12" fill="#222">fare_per_km</text>
+<text x="870" y="152" font-size="12" fill="#222">reservation_fee</text>
+<rect x="580" y="270" width="210" height="155" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="580" y="270" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="685.0" y="288" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">TRAIN</text>
+<text x="590" y="314" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">train_no PK</text>
+<text x="590" y="331" font-size="12" fill="#222">train_name</text>
+<text x="590" y="348" font-size="12" fill="#222">train_type</text>
+<text x="590" y="365" font-size="12" fill="#a33">route_id FK</text>
+<text x="590" y="382" font-size="12" fill="#222">dep_time</text>
+<text x="590" y="399" font-size="12" fill="#222">run_days</text>
+<text x="590" y="416" font-size="12" fill="#222">is_active</text>
+<rect x="860" y="270" width="210" height="104" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="860" y="270" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="965.0" y="288" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">COACH</text>
+<text x="870" y="314" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">coach_id PK</text>
+<text x="870" y="331" font-size="12" fill="#a33">train_no FK</text>
+<text x="870" y="348" font-size="12" fill="#222">coach_label</text>
+<text x="870" y="365" font-size="12" fill="#a33">class_code FK</text>
+<rect x="1140" y="270" width="210" height="104" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="1140" y="270" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="1245.0" y="288" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">SEAT</text>
+<text x="1150" y="314" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">seat_id PK</text>
+<text x="1150" y="331" font-size="12" fill="#a33">coach_id FK</text>
+<text x="1150" y="348" font-size="12" fill="#222">seat_no</text>
+<text x="1150" y="365" font-size="12" fill="#222">berth_type</text>
+<rect x="580" y="500" width="210" height="104" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="580" y="500" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="685.0" y="518" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">TRAIN_SCHEDULE</text>
+<text x="590" y="544" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">schedule_id PK</text>
+<text x="590" y="561" font-size="12" fill="#a33">train_no FK</text>
+<text x="590" y="578" font-size="12" fill="#222">journey_date</text>
+<text x="590" y="595" font-size="12" fill="#222">sched_status</text>
+<rect x="860" y="500" width="210" height="206" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="860" y="500" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="965.0" y="518" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">RESERVATION</text>
+<text x="870" y="544" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">pnr PK</text>
+<text x="870" y="561" font-size="12" fill="#a33">passenger_id FK</text>
+<text x="870" y="578" font-size="12" fill="#a33">schedule_id FK</text>
+<text x="870" y="595" font-size="12" fill="#a33">class_code FK</text>
+<text x="870" y="612" font-size="12" fill="#a33">seat_id FK</text>
+<text x="870" y="629" font-size="12" fill="#a33">from_station FK</text>
+<text x="870" y="646" font-size="12" fill="#a33">to_station FK</text>
+<text x="870" y="663" font-size="12" fill="#222">booking_date</text>
+<text x="870" y="680" font-size="12" fill="#222">fare</text>
+<text x="870" y="697" font-size="12" fill="#222">status</text>
+<rect x="300" y="740" width="210" height="189" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="300" y="740" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="405.0" y="758" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">PASSENGER</text>
+<text x="310" y="784" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">passenger_id PK</text>
+<text x="310" y="801" font-size="12" fill="#222">full_name</text>
+<text x="310" y="818" font-size="12" fill="#222">gender</text>
+<text x="310" y="835" font-size="12" fill="#222">dob</text>
+<text x="310" y="852" font-size="12" fill="#222">phone (UQ)</text>
+<text x="310" y="869" font-size="12" fill="#222">email (UQ)</text>
+<text x="310" y="886" font-size="12" fill="#222">home_city</text>
+<text x="310" y="903" font-size="12" fill="#222">registered_on</text>
+<text x="310" y="920" font-size="12" fill="#222">concession_type</text>
+<rect x="860" y="760" width="210" height="138" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="860" y="760" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="965.0" y="778" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">PAYMENT</text>
+<text x="870" y="804" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">payment_id PK</text>
+<text x="870" y="821" font-size="12" fill="#a33">pnr FK (UQ)</text>
+<text x="870" y="838" font-size="12" fill="#222">amount</text>
+<text x="870" y="855" font-size="12" fill="#222">pay_mode</text>
+<text x="870" y="872" font-size="12" fill="#222">paid_on</text>
+<text x="870" y="889" font-size="12" fill="#222">pay_status</text>
+<rect x="1140" y="760" width="210" height="121" rx="4" fill="#f4f8fd" stroke="#1a4d8f" stroke-width="1.6"/>
+<rect x="1140" y="760" width="210" height="26" rx="4" fill="#1a4d8f"/>
+<text x="1245.0" y="778" font-size="13" fill="#fff" font-weight="bold" text-anchor="middle">CANCELLATION</text>
+<text x="1150" y="804" font-size="12" fill="#222" font-weight="bold" text-decoration="underline">cancel_id PK</text>
+<text x="1150" y="821" font-size="12" fill="#a33">pnr FK (UQ)</text>
+<text x="1150" y="838" font-size="12" fill="#222">cancelled_on</text>
+<text x="1150" y="855" font-size="12" fill="#222">refund_amount</text>
+<text x="1150" y="872" font-size="12" fill="#222">reason</text>
+<text x="20" y="950" font-size="11" fill="#555">PK = primary key (underlined), FK = foreign key (red), UQ = unique. Cardinality is read parent : child.</text>
+</svg>
